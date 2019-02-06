@@ -60,9 +60,33 @@ body {
 .row {
   padding-top: 5%;
 }
-
+#navtitle {
+  padding: 0px;
+  margin: 0px;
+}
+#editBtn {
+  background-color: transparent;
+  border: none;
+}
 .Name {
   font-family: "Concert One", cursive;
+}
+.checkbox-input-text {
+  padding-left: 20px;
+}
+.myrow {
+  padding-left: 30px;
+}
+#myModal4
+  > div
+  > div
+  > div.modal-body
+  > div.input-group
+  > div.input-group-text.row
+  > div
+  > input {
+  float: left;
+  margin-top: 10px;
 }
 
 .Story {
