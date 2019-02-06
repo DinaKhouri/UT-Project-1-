@@ -13,3 +13,52 @@
   width: 400px;
   height: 400px;
 }
+
+.my-container {
+  padding: 3%;
+  background-color: whitesmoke;
+  height: 500px;
+  width: 700px;
+  margin-top: 5%;
+  -webkit-box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
+}
+
+body {
+  background-image: url(../images/background.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.profile-img {
+  background-color: #fff;
+  height: 200px;
+  position: relative;
+  width: 200px;
+  border-radius: 100%;
+  border: 4px solid #fff;
+  -webkit-box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.75);
+}
+.find-me {
+  height: 40px;
+  width: 40px;
+}
+
+.row {
+  padding-top: 5%;
+}
+
+.Name {
+  font-family: "Concert One", cursive;
+}
+
+.Story {
+  font-family: "Indie Flower", cursive;
+  padding-top: 80px;
+}
