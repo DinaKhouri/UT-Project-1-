@@ -1,11 +1,15 @@
 .pagetitle {
-text-align: center;
+  text-align: center;
 }
 
 .donator-title {
-font-weight: bold;
+  font-weight: bold;
 }
 
 .btn {
-    margin-right: 5px;
+  margin-right: 5px;
+}
+#map {
+  width: 400px;
+  height: 400px;
 }
