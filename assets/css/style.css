@@ -48,8 +48,15 @@ body {
 .find-me {
   height: 40px;
   width: 40px;
+  float: left;
 }
-
+.find-me-text {
+  padding-left: 50px;
+  font-family: "Concert One", cursive;
+}
+.age {
+  font-family: "Concert One", cursive;
+}
 .row {
   padding-top: 5%;
 }
@@ -61,4 +68,14 @@ body {
 .Story {
   font-family: "Indie Flower", cursive;
   padding-top: 80px;
+}
+
+.edit {
+  height: 25px;
+  width: 25px;
+}
+.edit:hover {
+  -webkit-box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.75);
 }
