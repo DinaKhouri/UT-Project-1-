@@ -1,29 +1,30 @@
 // replace with our own firebase config copy&paste
-// Google API
+// Google API added in the html
+
 // Google maps function
-x = navigator.geolocation;
+// x = navigator.geolocation;
 
-x.getCurrentPosition(success, failure);
+// x.getCurrentPosition(success, failure);
 
-function success(position) {
-  var myLat = position.coords.latitude;
-  var myLong = position.coords.longitude;
+// function success(position) {
+//   var myLat = position.coords.latitude;
+//   var myLong = position.coords.longitude;
 
-  //alert(myLat);
+//   //alert(myLat);
 
-  var coords = new google.maps.LatLng(myLat, myLong);
+//   var coords = new google.maps.LatLng(myLat, myLong);
 
-  var mapOptions = {
-    zoom: 11,
-    center: coords,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
+//   var mapOptions = {
+//     zoom: 11,
+//     center: coords,
+//     mapTypeId: google.maps.MapTypeId.ROADMAP
+//   };
 
-  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  var marker = new google.maps.Marker({ map: map, position: coords });
-}
+//   var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+//   var marker = new google.maps.Marker({ map: map, position: coords });
+// }
 
-function failure() {}
+// function failure() {}
 
 // Initialize Firebase
 var config = {
