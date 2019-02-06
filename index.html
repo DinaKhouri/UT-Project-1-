@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Austin Giving Connection</title>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		 crossorigin="anonymous"></script>
+	
+	<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/._style.css" />
+
+
+</head>
+<body>
+
+        <div id="nav" class="navbar navbar-default">
+            <div class="container-fluid">
+                <div id="userDisplay" class="navbar-form">
+                    <p class="navbar-text navbar-right">Signed in as Guest</p>
+                </div>
+                <div id="navtitle" class="navbar navbar-left">
+                        <h4 class="navbar-text navbar-left">For Those in Need:</h4>
+                </div>
+                <div class="navbar-form">
+                    <!-- Button trigger modal -->
+                    <button type="button" id="createBtn" class="navbar-left btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                      Create Account
+                    </button>
+    
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Create Account</h4>
+                          </div>
+                          <div class="modal-body">
+                              <div class="input-group">
+                                 <input type="text" class="form-control" id="email" placeholder="email">
+                                 <input type="text" class="form-control" id="password" placeholder="password">
+                                 <input type="text" class="form-control" id="username" placeholder="username">
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button id="create" class="btn btn-primary" type="submit">Create</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+    
+                </div>
+                <div class="navbar-form">
+                    <!-- Button trigger modal -->
+                    <button type="button" id="loginBtn" class="navbar-left btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
+                      Sign In
+                    </button>
+    
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Login</h4>
+                          </div>
+                          <div class="modal-body">
+                              <div class="input-group">
+                                 <input type="text" class="form-control" id="emailLogin" placeholder="email">
+                                 <input type="text" class="form-control" id="passwordLogin" placeholder="password">
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button id="signin" class="btn btn-primary" type="submit">Login</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+    
+                </div>
+                <div class="navbar-form">
+                    <!-- Button trigger modal -->
+    
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Feedback</h4>
+                            <h3 class="modal-header" id="alertMessage" style="display:none;">You need to provide your name and a message, at least.</h3>
+                            <h3 class="modal-header" id="thankMessage" style="display:none;">Thank you for your feedback!</h3>
+                          </div>
+                          <div class="modal-body">
+                              <div class="input-group">
+                                  <input type="text" class="form-control" id="feedbackName" placeholder="Name (ex. John Smith)">
+                                 <input type="text" class="form-control" id="feedbackEmail" placeholder="Email (ex. johnsmith@gmail.com)">
+                                 <textarea type="text" id="feedbackMessage" class="form-control" rows="5" placeholder="Message (ex. Your site is fantastic!)"></textarea>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button id="submitFeedback" class="btn btn-primary" type="submitFeedback">Submit</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    <div class="pagetitle">
+        <h1>Austin Giving Connection</h1>
+    </div>
+    <br>
+    
+        <div class="container">
+    
+            <div class="panel panel-default">
+                <div class="panel-heading donator-title">For Those Wishing to Donate</div>
+                    <div class="panel-body">
+                        <div class="form">
+                            <div class="form-group">
+                                <label>State</label>
+                                 <select id="search" class="form-group form-control">
+                                 <option>Texas</option>
+                                 <option>California</option>
+                                 </select>
+                            </div>
+                            <label>City</label>
+                            <select id="youtube-vid" class="form-group form-control">
+                                 <option>Austin</option>
+                                 <option>Houston</option>
+                                 <option>Fort Worth</option>
+                            </select>							
+                            <!-- <div class="form-group">
+                                <label></label>
+                                <input id="subreddit" type="text" class="form-control" placeholder="">  
+                            </div> -->
+                            <label>Donation Category</label>
+                            <select id="red-sort" class="form-group form-control">
+                                <option>Shoes</option>
+                                <option>Shirt</option>
+                                <option>Pants</option>
+                                <option>Toy</option>
+                            </select>
+                            <!-- <label>Time</label>
+                            <select id="red-time" class="form-group form-control">
+                                <option value="all">All Time</option>
+                                <option value="hour">Past Hour</option>
+                                <option value="day">Past 24 Hours</option>
+                                <option value="week">Past Week</option>
+                                <option value="month">Past Month</option>
+                                <option value="year">Past Year</option>
+                            </select> -->
+                            <button id="submit" type="submit" class="btn btn-default">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="panel-heading">Saved Searches<button class="btn" id="clearBtn">Clear</button></div>
+            <div class="panel-body">
+                <ul id="displaysearch"></ul>
+            </div>
+    
+        </div>
+    
+    </body>
+<script src="assets/javascript/._app.js"></script>
+
+</html>
