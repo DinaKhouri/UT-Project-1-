@@ -26,7 +26,81 @@ crossorigin="anonymous"></script>
 
 </head>
 <body>
-    <p>Hi</p>
+    <div id="nav" class="navbar navbar-default">
+		<div class="container-fluid">
+			<div id="userDisplay" class="navbar-form">
+				<p class="navbar-text navbar-right">Signed in as Guest</p>
+			</div>
+			<div class="navbar-form">
+				<!-- Button trigger modal -->
+				<button type="button" id="createBtn" class="navbar-left btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+				  Create Account
+				</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Create Account</h4>
+				      </div>
+				      <div class="modal-body">
+				      	<div class="input-group">
+						 	<input type="text" class="form-control" id="email" placeholder="email">
+						 	<input type="text" class="form-control" id="password" placeholder="password">
+						 	<input type="text" class="form-control" id="username" placeholder="username">
+						</div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button id="create" class="btn btn-primary" type="submit">Create</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+
+			</div>
+			<div class="navbar-form">
+				<!-- Button trigger modal -->
+				<button type="button" id="loginBtn" class="navbar-left btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
+				  Sign In
+				</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Login</h4>
+				      </div>
+				      <div class="modal-body">
+				      	<div class="input-group">
+						 	<input type="text" class="form-control" id="emailLogin" placeholder="email">
+						 	<input type="text" class="form-control" id="passwordLogin" placeholder="password">
+						</div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button id="signin" class="btn btn-primary" type="submit">Login</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Welcome to Austin Giving Connection</h1>
+        </div>
+    </div>        
+
+
+
 
 
 
