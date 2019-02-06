@@ -7,7 +7,7 @@ var config = {
     authDomain: "ut-project-1-c4752.firebaseapp.com",
     databaseURL: "https://ut-project-1-c4752.firebaseio.com",
     projectId: "ut-project-1-c4752",
-    storageBucket: "",
+    storageBucket: "ut-project-1-c4752.appspot.com",
     messagingSenderId: "867695568882"
   };
   firebase.initializeApp(config);
@@ -42,62 +42,76 @@ database.ref("Searches").on("child_added", function(snapshot) {
 
 });
 
-$(document.body).on("click", "#submit", function(){
 
-	var searchItem = $("#search").val().trim();
-	var vidType = $("#youtube-vid").val().trim();
-	var subreddit = $("#subreddit").val().trim();
-	var sort = $("#red-sort").val().trim();
-	var redditTime = $("#red-time").val().trim();
+// code-not-needed-yet-start
 
 
-	if ( subreddit == "" ){
-		subreddit = "Gaming";
-	}
 
-	var searchData = {
+// $(document.body).on("click", "#submit", function(){
 
-		search: searchItem,
-		video: vidType,
-		sub: subreddit,
-		sort: sort,
-		time: redditTime,
-		user: username
-
-	}
-
-	//Pushing to database
-	database.ref("Searches").push(searchData);
-
-	displaySearches();
-
-});
-
-$(document.body).on("click", "#clearBtn", function(){
-
-	$("#displaysearch").empty();
-
-});
-
-function displaySearches () {
-
-	$("#displaysearch").empty();
-
-	for (var i=1;i<6;i++) {
-
-		searchItem = recentList[recentList.length-i];
-
-		var display = $("<li>");
-
-		display.text(searchItem);
-		$("#displaysearch").append(display);
+// 	var searchItem = $("#search").val().trim();
+// 	var vidType = $("#youtube-vid").val().trim();
+// 	var subreddit = $("#subreddit").val().trim();
+// 	var sort = $("#red-sort").val().trim();
+// 	var redditTime = $("#red-time").val().trim();
 
 
-	}
+// 	if ( subreddit == "" ){
+// 		subreddit = "Gaming";
+// 	}
 
-}
+// 	var searchData = {
+
+// 		search: searchItem,
+// 		video: vidType,
+// 		sub: subreddit,
+// 		sort: sort,
+// 		time: redditTime,
+// 		user: username
+
+// 	}
+
+// 	//Pushing to database
+// 	database.ref("Searches").push(searchData);
+
+// 	displaySearches();
+
+// });
+
+// $(document.body).on("click", "#clearBtn", function(){
+
+// 	$("#displaysearch").empty();
+
+// });
+
+// function displaySearches () {
+
+// 	$("#displaysearch").empty();
+
+// 	for (var i=1;i<6;i++) {
+
+// 		searchItem = recentList[recentList.length-i];
+
+// 		var display = $("<li>");
+
+// 		display.text(searchItem);
+// 		$("#displaysearch").append(display);
+
+
+// 	}
+
+// }
 
 // display searches code ends here
+
+// code-not-needed-yet-end
+
+
+
+
+
+
+
 
 // -------------------------------------------------------------------------------------------------------
 
