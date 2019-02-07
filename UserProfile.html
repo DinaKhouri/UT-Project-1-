@@ -230,6 +230,8 @@
           />
           <h3 class="Name row">My Name</h3>
           <h5 class="age row">Age:</h5>
+          <h5 class="phone row">Phone#:</h5>
+          <h5 class="email row">Email:</h5>
           <!-- Find me modal -->
           <div class="row">
                 <button
@@ -309,14 +311,16 @@
               </div>
               <div class="modal-body">
                 <div class="input-group">
+                  <!-- name input -->
                   <div class="row myrow">
                     <input
                       type="text"
                       class="form-control"
                       id="name-input"
-                      placeholder="email"
+                      placeholder="Name"
                     />
                   </div>
+                  <!-- age input -->
                   <div class="row myrow">
                     <input
                       type="text"
@@ -325,6 +329,25 @@
                       placeholder="Age"
                     />
                   </div>
+                  <!-- email input -->
+                  <div class="row myrow">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="email-input"
+                        placeholder="E-mail"
+                      />
+                    </div>
+                    <!-- Phone input -->
+                  <div class="row myrow">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="phone-input"
+                        placeholder="Phone"
+                      />
+                    </div>
+                  <!-- story input -->
                   <div class="row myrow">
                     <input
                       type="text"
@@ -336,7 +359,9 @@
                   <!-- check box for needs  -->
 
                   <div class="input-group-text row">
-                    <div class="row myrow"><h5>Things I Need</h5></div>
+                    <div class="row myrow checkbox"><h5>Things I Need</h5></div>
+                    <!-- Col 1 -->
+                    <div class ="col-sm-6">
                     <!-- .............. -->
                     <div class="row myrow">
                       <input
@@ -350,13 +375,35 @@
                     </div>
                     <!-- .............. -->
                     <div class="row myrow">
+                        <input
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="tissues">tissues</h6>
+                        </div>
+                      </div>
+                      <!-- .............. -->
+                    <div class="row myrow">
+                        <input
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="towels">Towels</h6>
+                        </div>
+                      </div>
+                    <!-- .............. -->
+                    <div class="row myrow">
                       <input
                         class="checkbox-input"
                         type="checkbox"
                         aria-label="Checkbox for following text input"
                       />
                       <div class="checkbox-input-text">
-                        <h6 class="shoes">Blanket</h6>
+                        <h6 class="blanket">Blanket</h6>
                       </div>
                     </div>
                     <!-- .............. -->
@@ -367,9 +414,72 @@
                         aria-label="Checkbox for following text input"
                       />
                       <div class="checkbox-input-text">
-                        <h6 class="shoes">Shirt</h6>
+                        <h6 class="shirt">Shirt</h6>
                       </div>
                     </div>
+                   <!-- .............. -->
+                  </div>
+                  <!--End of col 1 -->
+                   <!-- Col 2 -->
+                   <div class ="col-sm-6">
+                      <!-- .............. -->
+                      <div class="row myrow">
+                        <input
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="toiletries">Toiletries</h6>
+                        </div>
+                      </div>
+                      <!-- .............. -->
+                      <div class="row myrow">
+                          <input
+                            class="checkbox-input"
+                            type="checkbox"
+                            aria-label="Checkbox for following text input"
+                          />
+                          <div class="checkbox-input-text">
+                            <h6 class="Can-opener">Can opener</h6>
+                          </div>
+                        </div>
+                        <!-- .............. -->
+                      <div class="row myrow">
+                          <input
+                            class="checkbox-input"
+                            type="checkbox"
+                            aria-label="Checkbox for following text input"
+                          />
+                          <div class="checkbox-input-text">
+                            <h6 class="pots">Pots</h6>
+                          </div>
+                        </div>
+                      <!-- .............. -->
+                      <div class="row myrow">
+                        <input
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="bed">Bed</h6>
+                        </div>
+                      </div>
+                      <!-- .............. -->
+                      <div class="row myrow">
+                        <input
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="toaster">Toaster</h6>
+                        </div>
+                      </div>
+                     <!-- .............. -->
+                    </div>
+                    <!--End of col 2 -->
                   </div>
                 </div>
                 <div class="modal-footer">
