@@ -25,7 +25,6 @@ function success(position) {
 }
 
 function failure() {}
-
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyAWuF94b-EoeNn7avtftZ0sN9AD3MaOiPo",
