@@ -13,16 +13,22 @@
   width: 550px;
   height: 400px;
 }
-
+.logo {
+  height: 50px;
+  width: 50px;
+}
 .my-container {
   padding: 3%;
   background-color: whitesmoke;
   height: 500px;
   width: 700px;
-  margin-top: 5%;
+  margin-top: 3%;
   -webkit-box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
+}
+.search {
+  height: 300px;
 }
 
 body {
