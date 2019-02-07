@@ -28,10 +28,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <!-- <script
+    <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCziljnFB8c4Qkgka-cMbtc7qa1dQpSD0A&callback=initMap"
     type="text/javascript"
-  ></script> -->
+  ></script>
   </head>
   <body>
     <div id="nav" class="navbar navbar-default">
@@ -271,12 +271,21 @@
           />
           <h3 class="Name row">My Name</h3>
           <h5 class="age row">Age:</h5>
+          <!-- Find me modal -->
           <div class="row">
+                <button
+                type="button"
+                id="MapBtn"
+                class="navbar-left btn btn-primary btn-lg"
+                data-toggle="modal"
+                data-target="#myModal5"
+              >
             <img
               class="find-me"
               src="https://www.ditoweb.com/wp-content/uploads/2016/05/places-api.png"
             />
             <h5 class="find-me-text">Find me</h5>
+           
           </div>
         </div>
         <div class="col-sm-7">
@@ -314,6 +323,44 @@
             />
           </button>
         </div>
+         <!-- Find me modal pop up -->
+         <div
+         class="modal fade"
+         id="myModal5"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="myModalLabel"
+       >
+       <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Find Me</h4>
+              </div>
+              <div class="modal-body">
+                    <div id="map"></div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-default"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                
+              </div>
+            </div>
+     </div>
+         <!-- modal end -->
+
         <!-- Edit modal -->
         <div
           class="modal fade"
