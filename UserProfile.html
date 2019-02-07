@@ -179,85 +179,44 @@
           </div>
         </div>
         <div class="navbar-form">
-          <!-- Button trigger modal -->
+         <!-- Button About trigger modal -->
+     <button type="button" id="aboutBtn" class="navbar-left btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal6">
+        About
+      </button>
 
-          <!-- Modal -->
-          <div
-            class="modal fade"
-            id="myModal3"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="myModalLabel"
-          >
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <h4 class="modal-title" id="myModalLabel">Feedback</h4>
-                  <h3
-                    class="modal-header"
-                    id="alertMessage"
-                    style="display:none;"
-                  >
-                    You need to provide your name and a message, at least.
-                  </h3>
-                  <h3
-                    class="modal-header"
-                    id="thankMessage"
-                    style="display:none;"
-                  >
-                    Thank you for your feedback!
-                  </h3>
-                </div>
-                <div class="modal-body">
-                  <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="feedbackName"
-                      placeholder="Name (ex. John Smith)"
-                    />
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="feedbackEmail"
-                      placeholder="Email (ex. johnsmith@gmail.com)"
-                    />
-                    <textarea
-                      type="text"
-                      id="feedbackMessage"
-                      class="form-control"
-                      rows="5"
-                      placeholder="Message (ex. Your site is fantastic!)"
-                    ></textarea>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-default"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    id="submitFeedback"
-                    class="btn btn-primary"
-                    type="submitFeedback"
-                  >
-                    Submit
-                  </button>
-                </div>
+      <!-- Modal About -->
+      <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">About</h4>
+            </div>
+            <div class="modal-body">
+                <div class="about">
+                  <!-- Penny you can edit your text here but make sure u change it in all pages -->
+                   <h5>
+                      Austin Giving Connection partners with local non-profits to find individuals who have the most critical needs and allows them to set up a giving profile which outlines their needs and tells their story.
+                      Those who wish to donate can search profiles and chose who receives their donation(s).  This provides a more personal connection between the two and allows opportunity for relationships to develop.  The person in need has the option to identify the means in which the donor communicates (e-mail, phone, text, or non-profit).
+                      The search function allows the user to find recipients based on their needs and their location.
+                      Recipient profiles will include:
+                      •    teenagers who are aging out of the foster care system
+                      •    chronically homeless
+                      •    families who have experienced loss from natural disasters, such as floods or fires
+                      •    families or individuals in transition due to illness or death
+                      •    children in transition due to family instability
+                      
+                      Once recipients establish a profile, they can go in and update their information at any time.  Profile input is stored in a database so that the donator can identify if their needs or location changes.
+                   </h5>
               </div>
             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              
+            </div>
           </div>
+        </div>
+      </div>
         </div>
       </div>
     </div>
