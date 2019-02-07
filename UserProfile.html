@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Austin Giving Connection</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Concert+One|Indie+Flower"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCziljnFB8c4Qkgka-cMbtc7qa1dQpSD0A&callback=initMap"
+    type="text/javascript"
+  ></script>
+  </head>
+  <body>
+    <div id="nav" class="navbar navbar-default">
+      <div class="container-fluid mynav">
+        <div id="userDisplay" class="navbar-form">
+          <p class="navbar-text navbar-right">Signed in as Guest</p>
+        </div>
+        <div id="navtitle" class="navbar navbar-left">
+          <h4 class="navbar-text navbar-left">For Those in Need:</h4>
+        </div>
+        <div class="navbar-form">
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            id="createBtn"
+            class="navbar-left btn btn-primary btn-lg"
+            data-toggle="modal"
+            data-target="#myModal"
+          >
+            Create Account
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="myModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">Create Account</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="email"
+                      placeholder="email"
+                    />
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="password"
+                      placeholder="password"
+                    />
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="username"
+                      placeholder="username"
+                    />
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button id="create" class="btn btn-primary" type="submit">
+                    Create
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-form">
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            id="loginBtn"
+            class="navbar-left btn btn-primary btn-lg"
+            data-toggle="modal"
+            data-target="#myModal2"
+          >
+            Sign In
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="myModal2"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">Login</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="emailLogin"
+                      placeholder="email"
+                    />
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="passwordLogin"
+                      placeholder="password"
+                    />
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button id="signin" class="btn btn-primary" type="submit">
+                    Login
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-form">
+          <!-- Button trigger modal -->
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="myModal3"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">Feedback</h4>
+                  <h3
+                    class="modal-header"
+                    id="alertMessage"
+                    style="display:none;"
+                  >
+                    You need to provide your name and a message, at least.
+                  </h3>
+                  <h3
+                    class="modal-header"
+                    id="thankMessage"
+                    style="display:none;"
+                  >
+                    Thank you for your feedback!
+                  </h3>
+                </div>
+                <div class="modal-body">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="feedbackName"
+                      placeholder="Name (ex. John Smith)"
+                    />
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="feedbackEmail"
+                      placeholder="Email (ex. johnsmith@gmail.com)"
+                    />
+                    <textarea
+                      type="text"
+                      id="feedbackMessage"
+                      class="form-control"
+                      rows="5"
+                      placeholder="Message (ex. Your site is fantastic!)"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    id="submitFeedback"
+                    class="btn btn-primary"
+                    type="submitFeedback"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-container">
+      <div class="row">
+        <div class="col-sm-4">
+          <img
+            class="profile-img row"
+            src="https://bootdey.com/img/Content/avatar/avatar7.png"
+          />
+          <h3 class="Name row">My Name</h3>
+          <h5 class="age row">Age:</h5>
+          <!-- Find me modal -->
+          <div class="row">
+                <button
+                type="button"
+                id="MapBtn"
+                class="navbar-left btn btn-primary btn-lg"
+                data-toggle="modal"
+                data-target="#myModal5"
+              >
+            <img
+              class="find-me"
+              src="https://www.ditoweb.com/wp-content/uploads/2016/05/places-api.png"
+            />
+            <h5 class="find-me-text">Find me</h5>
+           
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <h5 class="Story">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
+            laboriosam voluptates pariatur nihil, assumenda aliquam nobis
+            doloremque accusamus vitae praesentium commodi atque ea, porro
+            beatae expedita quasi, rem ut odit. Lorem, ipsum dolor sit amet
+            consectetur adipisicing elit. Aspernatur laboriosam voluptates
+            pariatur nihil, assumenda aliquam nobis doloremque accusamus vitae
+            praesentium commodi atque ea, porro beatae expedita quasi, rem ut
+            odit.<br />
+            <br />Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            Aspernatur laboriosam voluptates pariatur nihil, assumenda aliquam
+            nobis doloremque accusamus vitae praesentium commodi atque ea, porro
+            beatae expedita quasi, rem ut odit. Lorem, ipsum dolor sit amet
+            consectetur adipisicing elit. Aspernatur laboriosam voluptates
+            pariatur nihil, assumenda aliquam nobis doloremque accusamus vitae
+            praesentium commodi atque ea, porro beatae expedita quasi, rem ut
+            odit.
+          </h5>
+        </div>
+        <div class="col-sm-1 ">
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            id="editBtn"
+            class="navbar-left btn btn-primary btn-lg"
+            data-toggle="modal"
+            data-target="#myModal4"
+          >
+            <img
+              class="edit row "
+              src="http://pluspng.com/img-png/update-button-png-adjust-edit-update-icon-512.png"
+            />
+          </button>
+        </div>
+         <!-- Find me modal pop up -->
+         <div
+         class="modal fade"
+         id="myModal5"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="myModalLabel"
+       >
+       <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Find Me</h4>
+              </div>
+              <div class="modal-body">
+                    <div id="map"></div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-default"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                
+              </div>
+            </div>
+     </div>
+         <!-- modal end -->
+
+        <!-- Edit modal -->
+        <div
+          class="modal fade"
+          id="myModal4"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="myModalLabel"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Edit Profile</h4>
+              </div>
+              <div class="modal-body">
+                <div class="input-group">
+                  <div class="row myrow">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name-input"
+                      placeholder="email"
+                    />
+                  </div>
+                  <div class="row myrow">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="age-input"
+                      placeholder="Age"
+                    />
+                  </div>
+                  <div class="row myrow">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="story-input"
+                      placeholder="Your Story"
+                    />
+                  </div>
+                  <!-- check box for needs  -->
+
+                  <div class="input-group-text row">
+                    <div class="row myrow"><h5>Things I Need</h5></div>
+                    <!-- .............. -->
+                    <div class="row myrow">
+                      <input
+                        class="checkbox-input"
+                        type="checkbox"
+                        aria-label="Checkbox for following text input"
+                      />
+                      <div class="checkbox-input-text">
+                        <h6 class="shoes">Shoes</h6>
+                      </div>
+                    </div>
+                    <!-- .............. -->
+                    <div class="row myrow">
+                      <input
+                        class="checkbox-input"
+                        type="checkbox"
+                        aria-label="Checkbox for following text input"
+                      />
+                      <div class="checkbox-input-text">
+                        <h6 class="shoes">Blanket</h6>
+                      </div>
+                    </div>
+                    <!-- .............. -->
+                    <div class="row myrow">
+                      <input
+                        class="checkbox-input"
+                        type="checkbox"
+                        aria-label="Checkbox for following text input"
+                      />
+                      <div class="checkbox-input-text">
+                        <h6 class="shoes">Shirt</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button id="Submit" class="btn btn-primary" type="submit">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="assets/javascript/app.js"></script>
+</html>
