@@ -16,6 +16,10 @@
 .logo {
   height: 50px;
   width: 50px;
+  padding: 5px;
+}
+.about {
+  font-family: "Noto Serif SC", serif;
 }
 .my-container {
   padding: 3%;
@@ -29,6 +33,10 @@
 }
 .search {
   height: 300px;
+}
+.result {
+  height: 200px;
+  margin-bottom: 50px;
 }
 #myModal4 > div > div > div.modal-body > div.input-group {
   width: 90%;
@@ -77,6 +85,12 @@ body > div.container.my-container > div {
 #navtitle {
   padding: 0px;
   margin: 0px;
+}
+.title {
+  float: left;
+}
+#aboutBtn {
+  margin-right: 500px;
 }
 #editBtn {
   background-color: transparent;

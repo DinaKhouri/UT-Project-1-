@@ -134,7 +134,19 @@ $(document.body).on("click", "#create", function() {
   var password = $("#password")
     .val()
     .trim();
-  username = $("#username")
+  var username = $("#username")
+    .val()
+    .trim();
+  var age = $("#age-input")
+    .val()
+    .trim();
+  var phone = $("#phone-input")
+    .val()
+    .trim();
+  var story = $("#story-input")
+    .val()
+    .trim();
+  var image = $("#image-input")
     .val()
     .trim();
 
@@ -143,7 +155,7 @@ $(document.body).on("click", "#create", function() {
 
     return;
   } else {
-    firebaseCreate(email, password, username);
+    firebaseCreate(email, password, username, age, phone, story, image);
   }
 });
 
@@ -184,11 +196,15 @@ $(document.body).on("click", "#logout", function() {
   }
 });
 
-function firebaseCreate(email, password, username) {
+function firebaseCreate(email, password, username, age, phone, story, image) {
   var user = {
     email: email,
     password: password,
-    username: username
+    username: username,
+    age: age,
+    phone: phone,
+    story: story,
+    image: image
   };
 
   database.ref("Users").push(user);
@@ -313,7 +329,7 @@ $(document.body).on("click", "#submitFeedback", function() {
     .val()
     .trim();
   // push to check function
-  runCheck(name, email, message);
+  runCheck(name, email, message, age, phone, story, image);
 });
 
 $(document.body).on("click", "#cancelModal", function() {
@@ -380,14 +396,14 @@ function runCheck(name, email, message) {
     // if it returns true
     else {
       // push values
-      submitFeedback(name, email, message);
+      submitFeedback(name, email, message, age, phone, story);
     }
   }
 
   // if no email
   else {
     // push values to submit fn
-    submitFeedback(name, email, message);
+    submitFeedback(name, email, message, age, phone, story);
   }
 }
 
