@@ -35,8 +35,8 @@
   height: 300px;
 }
 .result {
-  min-height: 400px;
-  max-height: auto;
+  min-height: 700px;
+  
   margin-bottom: 50px;
 }
 #myModal4 > div > div > div.modal-body > div.input-group {
