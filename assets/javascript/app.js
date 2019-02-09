@@ -149,13 +149,41 @@ $(document.body).on("click", "#create", function() {
   var image = $("#image-input")
     .val()
     .trim();
+  var shoes = $("input:checkbox[name=shoes]:checked").val();
+  var tissues = $("input:checkbox[name=tissues]:checked").val();
+  var towels = $("input:checkbox[name=towels]:checked").val();
+  var blanket = $("input:checkbox[name=blanket]:checked").val();
+  var shirt = $("input:checkbox[name=shirt]:checked").val();
+  var toiliteries = $("input:checkbox[name=toiliterries]:checked").val();
+  var canOpener = $("input:checkbox[name=canOpener]:checked").val();
+  var pots = $("input:checkbox[name=pots]:checked").val();
+  var bed = $("input:checkbox[name=bed]:checked").val();
+  var toaster = $("input:checkbox[name=toaster]:checked").val();
 
   if (create(email, password) == false) {
     console.log("Login failed");
 
     return;
   } else {
-    firebaseCreate(email, password, username, age, phone, story, image);
+    firebaseCreate(
+      email,
+      password,
+      username,
+      age,
+      phone,
+      story,
+      image,
+      shoes,
+      tissues,
+      towels,
+      blanket,
+      shirt,
+      toiliteries,
+      canOpener,
+      pots,
+      bed,
+      toaster
+    );
   }
 });
 
@@ -196,7 +224,25 @@ $(document.body).on("click", "#logout", function() {
   }
 });
 
-function firebaseCreate(email, password, username, age, phone, story, image) {
+function firebaseCreate(
+  email,
+  password,
+  username,
+  age,
+  phone,
+  story,
+  image,
+  shoes,
+  tissues,
+  towels,
+  blanket,
+  shirt,
+  toiliteries,
+  canOpener,
+  pots,
+  bed,
+  toaster
+) {
   var user = {
     email: email,
     password: password,
@@ -204,7 +250,17 @@ function firebaseCreate(email, password, username, age, phone, story, image) {
     age: age,
     phone: phone,
     story: story,
-    image: image
+    image: image,
+    shoes: shoes,
+    tissues: tissues,
+    towels: towels,
+    blanket: blanket,
+    shirt: shirt,
+    toiliteries: toiliteries,
+    canOpener: canOpener,
+    pots: pots,
+    bed: bed,
+    toaster: toaster
   };
 
   database.ref("Users").push(user);
