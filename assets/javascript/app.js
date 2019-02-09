@@ -22,7 +22,7 @@ function success(position) {
 
   var map = new google.maps.Map(document.getElementById("map"), mapOptions);
   var marker = new google.maps.Marker({ map: map, position: coords });
-}
+};
 
 function failure() {}
 // Initialize Firebase
@@ -63,6 +63,33 @@ database.ref("Searches").on(
     console.log("The read failed: " + errorObject.code);
   }
 );
+
+
+// need to make #search-button relative to drop-down menu select.
+$(document).on("click", "#search-button", function() {
+  console.log("button clicked!");
+
+  // menuPick = currentPick
+  var optionText = $("#red-sort option:selected").text();
+        alert("Selected Option Text: "+optionText);
+
+  var userRef = firebase.database().ref("Users");
+
+  
+  userRef.orderByChild("password").equalTo("password1").on("child_added", function(snapshot) {
+      var name = userRef.child.username;
+      // console.log(userRef);
+       console.log("this userkey has password: password1 " , snapshot.val().username);
+      var key = snapshot.key;
+      console.log("------------------",userRef.GetReference("Users").orderByChild(key));
+      
+      // console.log("this key has name: " + name);
+      console.log(snapshot);
+      // $("#append-search").html("user " + [snapshot.key] + " " + name);
+    
+      });
+});
+
 
 // code-not-needed-yet-start
 
