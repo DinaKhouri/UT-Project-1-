@@ -66,20 +66,25 @@ database.ref("Searches").on(
 
 
 // need to make #search-button relative to drop-down menu select.
-$(document).on("click", "#search-button", function() {
+$(document).on("click", "#search-button", function(event) {
   console.log("button clicked!");
-
+  event.preventDefault();
   // menuPick = currentPick
-  var optionText = $("#red-sort option:selected").text();
-        alert("Selected Option Text: "+optionText);
 
   var userRef = firebase.database().ref("Users");
 
+  var optionText = $("#red-sort option:selected").text().toLowerCase();
+        console.log("(Outside child_added scope) Selected Option Text: "+optionText);
   
-  userRef.orderByChild("password").equalTo("password1").on("child_added", function(snapshot) {
-      var name = userRef.child.username;
+  userRef.orderByChild(optionText).equalTo("on").on("child_added", function(snapshot) {
+      // var name = userRef.child.username;
       // console.log(userRef);
-       console.log("this userkey has password: password1 " , snapshot.val().username);
+      // console.log("child_added clicked")
+
+      // getting the text value of the drop-down menu selected option.
+      var optionText = $("#red-sort option:selected").text();
+      // console.log("Selected Option Text: "+optionText);
+      console.log("this user needs " + optionText, snapshot.val().username)
       var key = snapshot.key;
       console.log("------------------",userRef.GetReference("Users").orderByChild(key));
       
