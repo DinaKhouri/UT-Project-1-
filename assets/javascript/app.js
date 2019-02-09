@@ -187,7 +187,7 @@ $(document.body).on("click", "#create", function() {
   var shirt = $("input:checkbox[name=shirt]:checked").val() || null;
   var toiletries =
     $("input:checkbox[name=toiletries]:checked").val() || null;
-  var canopener = $("input:checkbox[name=canopener]:checked").val() || null;
+  var socks = $("input:checkbox[name=socks]:checked").val() || null;
   var pots = $("input:checkbox[name=pots]:checked").val() || null;
   var bed = $("input:checkbox[name=bed]:checked").val() || null;
   var toaster = $("input:checkbox[name=toaster]:checked").val() || null;
@@ -211,7 +211,7 @@ $(document.body).on("click", "#create", function() {
       blanket,
       shirt,
       toiletries,
-      canopener,
+      socks,
       pots,
       bed,
       toaster
@@ -270,7 +270,7 @@ function firebaseCreate(
   blanket,
   shirt,
   toiliteries,
-  canopener,
+  socks,
   pots,
   bed,
   toaster
@@ -289,7 +289,7 @@ function firebaseCreate(
     blanket: blanket,
     shirt: shirt,
     toiliteries: toiliteries,
-    canopener: canopener,
+    socks: socks,
     pots: pots,
     bed: bed,
     toaster: toaster
