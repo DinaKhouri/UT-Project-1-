@@ -1,30 +1,37 @@
 // replace with our own firebase config copy&paste
 // Google API added in the html
-
+// var mapar = {};
+// var markerar = {};
+var myLatd;
+var myLongd;
 //Google maps function
-x = navigator.geolocation;
+$(".show").on("click", function() {
+  x = navigator.geolocation;
 
-x.getCurrentPosition(success, failure);
+  x.getCurrentPosition(success, failure);
 
-function success(position) {
-  var myLat = position.coords.latitude;
-  var myLong = position.coords.longitude;
+  function success(position) {
+    myLat = position.coords.latitude;
+    myLong = position.coords.longitude;
+    myLatd = myLat;
+    myLongd = myLong;
+    var coords = new google.maps.LatLng(myLat, myLong);
 
-  //alert(myLat);
+    var mapOptions = {
+      zoom: 11,
+      center: coords,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
 
-  var coords = new google.maps.LatLng(myLat, myLong);
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    marker = new google.maps.Marker({ map: map, position: coords });
+    // mapar.push(map);
+    // markar.push(marker);
+  }
 
-  var mapOptions = {
-    zoom: 11,
-    center: coords,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
+  function failure() {}
+});
 
-  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  var marker = new google.maps.Marker({ map: map, position: coords });
-}
-
-function failure() {}
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyAWuF94b-EoeNn7avtftZ0sN9AD3MaOiPo",
@@ -94,65 +101,6 @@ $(document).on("click", "#search-button", function(event) {
     });
 });
 
-// code-not-needed-yet-start
-
-// $(document.body).on("click", "#submit", function(){
-
-// 	var searchItem = $("#search").val().trim();
-// 	var vidType = $("#youtube-vid").val().trim();
-// 	var subreddit = $("#subreddit").val().trim();
-// 	var sort = $("#red-sort").val().trim();
-// 	var redditTime = $("#red-time").val().trim();
-
-// 	if ( subreddit == "" ){
-// 		subreddit = "Gaming";
-// 	}
-
-// 	var searchData = {
-
-// 		search: searchItem,
-// 		video: vidType,
-// 		sub: subreddit,
-// 		sort: sort,
-// 		time: redditTime,
-// 		user: username
-
-// 	}
-
-// 	//Pushing to database
-// 	database.ref("Searches").push(searchData);
-
-// 	displaySearches();
-
-// });
-
-// $(document.body).on("click", "#clearBtn", function(){
-
-// 	$("#displaysearch").empty();
-
-// });
-
-// function displaySearches () {
-
-// 	$("#displaysearch").empty();
-
-// 	for (var i=1;i<6;i++) {
-
-// 		searchItem = recentList[recentList.length-i];
-
-// 		var display = $("<li>");
-
-// 		display.text(searchItem);
-// 		$("#displaysearch").append(display);
-
-// 	}
-
-// }
-
-// display searches code ends here
-
-// code-not-needed-yet-end
-
 // -------------------------------------------------------------------------------------------------------
 
 // user login code starts here
@@ -179,6 +127,10 @@ $(document.body).on("click", "#create", function() {
   var image = $("#image-input")
     .val()
     .trim();
+  console.log(myLatd);
+  console.log(myLongd);
+  // myLatd;
+  // myLongd;
   var shoes = $("input:checkbox[name=shoes]:checked").val() || null;
   var tissues = $("input:checkbox[name=tissues]:checked").val() || null;
   var towels = $("input:checkbox[name=towels]:checked").val() || null;
@@ -204,6 +156,8 @@ $(document.body).on("click", "#create", function() {
       phone,
       story,
       image,
+      myLatd,
+      myLongd,
       shoes,
       tissues,
       towels,
@@ -263,6 +217,8 @@ function firebaseCreate(
   phone,
   story,
   image,
+  myLatd,
+  myLongd,
   shoes,
   tissues,
   towels,
@@ -282,6 +238,8 @@ function firebaseCreate(
     phone: phone,
     story: story,
     image: image,
+    lat: myLatd,
+    long: myLongd,
     shoes: shoes,
     tissues: tissues,
     towels: towels,
