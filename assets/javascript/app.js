@@ -48,21 +48,21 @@ var username = "Guest";
 
 // display searches code begins here
 
-database.ref("Searches").on(
-  "child_added",
-  function(snapshot) {
-    if (snapshot.child("search").exists()) {
-      var searchItem = snapshot.val().search;
+// database.ref("Searches").on(
+//   "child_added",
+//   function(snapshot) {
+//     if (snapshot.child("search").exists()) {
+//       var searchItem = snapshot.val().search;
 
-      recentList.push(searchItem);
+//       recentList.push(searchItem);
 
-      displaySearches();
-    }
-  },
-  function(errorObject) {
-    console.log("The read failed: " + errorObject.code);
-  }
-);
+//       displaySearches();
+//     }
+//   },
+//   function(errorObject) {
+//     console.log("The read failed: " + errorObject.code);
+//   }
+// );
 
 // event listener for search-button that queries the database for user profiles that have the value of "on" for the selected option (optionText).
 $(document).on("click", "#search-button", function(event) {
@@ -73,7 +73,8 @@ $(document).on("click", "#search-button", function(event) {
   // getting the text value of the drop-down menu selected option.
   var optionText = $("#red-sort option:selected")
     .text()
-    .toLowerCase();
+    .toLowerCase()
+    .trim();
   console.log(
     "(Outside child_added scope) Selected Option Text: " + optionText
   );
@@ -83,11 +84,11 @@ $(document).on("click", "#search-button", function(event) {
     .equalTo("on")
     .on("child_added", function(snapshot) {
       var optionText = $("#red-sort option:selected").text();
-      console.log("this user needs " + optionText, snapshot.val().username);
+      console.log("this user needs " + optionText + ":", snapshot.val().username);
       var key = snapshot.key;
       console.log(
         "------------------",
-        userRef.GetReference("Users").orderByChild(key)
+        // userRef.GetReference("Users").orderByChild(key)
       );
       console.log(snapshot);
       // $("#append-search").html("user " + snapshot.key + " " + name);
@@ -172,7 +173,7 @@ $(document.body).on("click", "#create", function() {
     .trim();
   var phone = $("#phone-input")
     .val()
-    .trim();
+    .trim();  
   var story = $("#story-input")
     .val()
     .trim();
@@ -184,9 +185,9 @@ $(document.body).on("click", "#create", function() {
   var towels = $("input:checkbox[name=towels]:checked").val() || null;
   var blanket = $("input:checkbox[name=blanket]:checked").val() || null;
   var shirt = $("input:checkbox[name=shirt]:checked").val() || null;
-  var toiliteries =
-    $("input:checkbox[name=toiliterries]:checked").val() || null;
-  var canOpener = $("input:checkbox[name=canOpener]:checked").val() || null;
+  var toiletries =
+    $("input:checkbox[name=toiletries]:checked").val() || null;
+  var canopener = $("input:checkbox[name=canopener]:checked").val() || null;
   var pots = $("input:checkbox[name=pots]:checked").val() || null;
   var bed = $("input:checkbox[name=bed]:checked").val() || null;
   var toaster = $("input:checkbox[name=toaster]:checked").val() || null;
@@ -209,8 +210,8 @@ $(document.body).on("click", "#create", function() {
       towels,
       blanket,
       shirt,
-      toiliteries,
-      canOpener,
+      toiletries,
+      canopener,
       pots,
       bed,
       toaster
@@ -269,7 +270,7 @@ function firebaseCreate(
   blanket,
   shirt,
   toiliteries,
-  canOpener,
+  canopener,
   pots,
   bed,
   toaster
@@ -288,7 +289,7 @@ function firebaseCreate(
     blanket: blanket,
     shirt: shirt,
     toiliteries: toiliteries,
-    canOpener: canOpener,
+    canopener: canopener,
     pots: pots,
     bed: bed,
     toaster: toaster
