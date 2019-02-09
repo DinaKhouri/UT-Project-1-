@@ -89,8 +89,8 @@ body > div.container.my-container > div {
 .title {
   float: left;
 }
-#aboutBtn {
-  margin-right: 500px;
+#ProfileBtn {
+  margin-right: 350px;
 }
 #editBtn {
   background-color: transparent;
