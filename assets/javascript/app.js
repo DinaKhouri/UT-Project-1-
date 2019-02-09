@@ -2,6 +2,38 @@
 // Google API added in the html
 // var mapar = {};
 // var markerar = {};
+<<<<<<< HEAD
+=======
+var myLatd;
+var myLongd;
+//Google maps function
+$(".show").on("click", function() {
+  x = navigator.geolocation;
+
+  x.getCurrentPosition(success, failure);
+
+  function success(position) {
+    myLat = position.coords.latitude;
+    myLong = position.coords.longitude;
+    myLatd = myLat;
+    myLongd = myLong;
+    var coords = new google.maps.LatLng(myLat, myLong);
+
+    var mapOptions = {
+      zoom: 11,
+      center: coords,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    marker = new google.maps.Marker({ map: map, position: coords });
+    // mapar.push(map);
+    // markar.push(marker);
+  }
+
+  function failure() {}
+});
+>>>>>>> saturday
 
 // Initialize Firebase
 var config = {
@@ -97,6 +129,7 @@ $(document).on("click", "#search-button", function(event) {
         "this user needs " + optionText + ":",
         snapshot.val().username
       );
+<<<<<<< HEAD
       var key = snapshot.key;
       var data = snapshot.val();
       console.log(data);
@@ -139,6 +172,9 @@ $(document).on("click", "#search-button", function(event) {
       //   // userRef.GetReference("Users").orderByChild(key)
       // );
       // console.log(snapshot);
+=======
+      console.log(snapshot);
+>>>>>>> saturday
       // $("#append-search").html("user " + snapshot.key + " " + name);
     });
 });
