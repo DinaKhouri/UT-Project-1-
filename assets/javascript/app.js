@@ -34,15 +34,23 @@ var config = {
   storageBucket: "ut-project-1-c4752.appspot.com",
   messagingSenderId: "867695568882"
 };
+
 firebase.initializeApp(config);
 
 var database = firebase.database();
+
+//storageService is a reference to firebase storage service — it allows you to use all of the methods they make available for storing data and files.
+const storageService = firebase.storage();
+//storageRef is a reference to actual instantiation of that service — it will lead you to our specific database and root file location where things get uploaded.
+const storageRef = storageService.ref();
 
 var recentList = [];
 
 var emailList = {};
 
 var username = "Guest";
+
+
 
 // -------------------------------------------------------------------------------------------------------
 
@@ -156,6 +164,14 @@ $(document).on("click", "#search-button", function(event) {
 
 // -------------------------------------------------------------------------------------------------------
 
+// grab image name when saved 
+var selectedFile;
+$("#file-select").change(handleFileUploadChange);
+function handleFileUploadChange(e) {
+    //selectedFile will keep track of whatever file user has input via the Choose File button.
+  selectedFile = e.target.files[0]
+  console.log("selectedFile", selectedFile);
+};
 // user login code starts here
 
 $(document.body).on("click", "#create", function() {
@@ -177,9 +193,23 @@ $(document.body).on("click", "#create", function() {
   var story = $("#story-input")
     .val()
     .trim();
-  var image = $("#image-input")
-    .val()
-    .trim();
+
+
+  function handleFileUploadSubmit(e) {
+    console.log("selectedFile.name", selectedFile.name);
+    const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
+    uploadTask.on('state_changed', (snapshot) => {
+      console.log('snapshot:', snapshot)
+    // Observe state change events such as progress, pause, and resume
+    }, (error) => {
+      // Handle unsuccessful uploads
+      console.log(error);
+    }, () => {
+      // Do something once upload is complete
+      console.log('success');
+    });
+  }
+
   var shoes = $("input:checkbox[name=shoes]:checked").val() || null;
   var tissues = $("input:checkbox[name=tissues]:checked").val() || null;
   var towels = $("input:checkbox[name=towels]:checked").val() || null;
@@ -204,7 +234,6 @@ $(document.body).on("click", "#create", function() {
       age,
       phone,
       story,
-      image,
       shoes,
       tissues,
       towels,
@@ -216,6 +245,9 @@ $(document.body).on("click", "#create", function() {
       bed,
       toaster
     );
+    
+    handleFileUploadSubmit();
+  
   }
 });
 
@@ -263,7 +295,6 @@ function firebaseCreate(
   age,
   phone,
   story,
-  image,
   shoes,
   tissues,
   towels,
@@ -282,7 +313,6 @@ function firebaseCreate(
     age: age,
     phone: phone,
     story: story,
-    image: image,
     shoes: shoes,
     tissues: tissues,
     towels: towels,
@@ -310,7 +340,7 @@ function firebaseCreate(
   $(".phone").text("phone#:" + phone);
   $(".email").text("Email:" + email);
   $(".Story").text(story);
-  $(".profile-img").attr("src", image);
+  //$(".profile-img").attr("src", image);
 
   var logoutBtn = $("<button>");
   logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
@@ -426,7 +456,7 @@ $(document.body).on("click", "#submitFeedback", function() {
     .val()
     .trim();
   // push to check function
-  runCheck(name, email, message, age, phone, story, image);
+  runCheck(name, email, message, age, phone, story);
 });
 
 $(document.body).on("click", "#cancelModal", function() {
