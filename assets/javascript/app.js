@@ -89,15 +89,15 @@ $(document).on("click", "#search-button", function(event) {
       var key = snapshot.key;
       var data = snapshot.val();
       console.log(data);
-      var profImage = $("<img>").attr("src", data.image);
+      // var profImage = $("<img>").attr("src", data.image);
       var SRC = data.image;
-      console.log("this is the image", profImage);
+      // console.log("this is the image", profImage);
       console.log(SRC);
       // "<img src=snapshot.val().image + '.jpg'>";
      
       // append snapshot values to tbody
       
-      $("#result-list").append("<tr id='"+ key + "'><td> <img src="+SRC + "></td><td>"+ (snapshot.val().username) + "</td><td>"+ "Needs " + (optionText) + "</td>")
+      $("#result-list").append("<tr id='"+ key + "'><td> <img class='resultsPic' src="+SRC + "></td><td>"+ (snapshot.val().username) + "</td><td>"+ "Needs " + (optionText) + "</td>")
       // <td>"+ destination +"</td><td>"+ frequency +"</td><td>"+ nextArrival +"</td><td>"+ minutesAway +"</td>")
       
       // let resultsRow = $("<tr>").attr();
