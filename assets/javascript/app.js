@@ -22,7 +22,7 @@ function success(position) {
 
   var map = new google.maps.Map(document.getElementById("map"), mapOptions);
   var marker = new google.maps.Marker({ map: map, position: coords });
-};
+}
 
 function failure() {}
 // Initialize Firebase
@@ -71,20 +71,28 @@ $(document).on("click", "#search-button", function(event) {
   var userRef = firebase.database().ref("Users");
 
   // getting the text value of the drop-down menu selected option.
-  var optionText = $("#red-sort option:selected").text().toLowerCase();
-        console.log("(Outside child_added scope) Selected Option Text: "+optionText);
-  
-  userRef.orderByChild(optionText).equalTo("on").on("child_added", function(snapshot) {
+  var optionText = $("#red-sort option:selected")
+    .text()
+    .toLowerCase();
+  console.log(
+    "(Outside child_added scope) Selected Option Text: " + optionText
+  );
+
+  userRef
+    .orderByChild(optionText)
+    .equalTo("on")
+    .on("child_added", function(snapshot) {
       var optionText = $("#red-sort option:selected").text();
-      console.log("this user needs " + optionText, snapshot.val().username)
+      console.log("this user needs " + optionText, snapshot.val().username);
       var key = snapshot.key;
-      console.log("------------------",userRef.GetReference("Users").orderByChild(key));
+      console.log(
+        "------------------",
+        userRef.GetReference("Users").orderByChild(key)
+      );
       console.log(snapshot);
       // $("#append-search").html("user " + snapshot.key + " " + name);
-    
-      });
+    });
 });
-
 
 // code-not-needed-yet-start
 
@@ -171,16 +179,17 @@ $(document.body).on("click", "#create", function() {
   var image = $("#image-input")
     .val()
     .trim();
-  var shoes = $("input:checkbox[name=shoes]:checked").val();
-  var tissues = $("input:checkbox[name=tissues]:checked").val();
-  var towels = $("input:checkbox[name=towels]:checked").val();
-  var blanket = $("input:checkbox[name=blanket]:checked").val();
-  var shirt = $("input:checkbox[name=shirt]:checked").val();
-  var toiliteries = $("input:checkbox[name=toiliterries]:checked").val();
-  var canOpener = $("input:checkbox[name=canOpener]:checked").val();
-  var pots = $("input:checkbox[name=pots]:checked").val();
-  var bed = $("input:checkbox[name=bed]:checked").val();
-  var toaster = $("input:checkbox[name=toaster]:checked").val();
+  var shoes = $("input:checkbox[name=shoes]:checked").val() || null;
+  var tissues = $("input:checkbox[name=tissues]:checked").val() || null;
+  var towels = $("input:checkbox[name=towels]:checked").val() || null;
+  var blanket = $("input:checkbox[name=blanket]:checked").val() || null;
+  var shirt = $("input:checkbox[name=shirt]:checked").val() || null;
+  var toiliteries =
+    $("input:checkbox[name=toiliterries]:checked").val() || null;
+  var canOpener = $("input:checkbox[name=canOpener]:checked").val() || null;
+  var pots = $("input:checkbox[name=pots]:checked").val() || null;
+  var bed = $("input:checkbox[name=bed]:checked").val() || null;
+  var toaster = $("input:checkbox[name=toaster]:checked").val() || null;
 
   if (create(email, password) == false) {
     console.log("Login failed");
