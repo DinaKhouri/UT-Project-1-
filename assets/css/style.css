@@ -153,3 +153,8 @@ input.checkbox-input {
 .checkbox-input-text {
   float: left;
 }
+
+.resultsPic {
+  height: 100px;
+  width: 100px;
+}
