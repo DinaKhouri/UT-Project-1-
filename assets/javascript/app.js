@@ -92,7 +92,10 @@ $(document).on("click", "#search-button", function(event) {
     .equalTo("on")
     .on("child_added", function(snapshot) {
       var optionText = $("#red-sort option:selected").text();
-      console.log("this user needs " + optionText + ":", snapshot.val().username);
+      console.log(
+        "this user needs " + optionText + ":",
+        snapshot.val().username
+      );
       var key = snapshot.key;
       var data = snapshot.val();
       console.log(data);
@@ -101,25 +104,34 @@ $(document).on("click", "#search-button", function(event) {
       // console.log("this is the image", profImage);
       console.log(SRC);
       // "<img src=snapshot.val().image + '.jpg'>";
-     
+
       // append snapshot values to tbody
-      
-      $("#result-list").append("<tr id='"+ key + "'><td> <img class='resultsPic' src="+SRC + "></td><td>"+ (snapshot.val().username) + "</td><td>"+ "Needs " + (optionText) + "</td>")
+
+      $("#result-list").append(
+        "<tr id='" +
+          key +
+          "'><td> <img class='resultsPic' src=" +
+          SRC +
+          "></td><td>" +
+          snapshot.val().username +
+          "</td><td>" +
+          "Needs " +
+          optionText +
+          "</td>"
+      );
       // <td>"+ destination +"</td><td>"+ frequency +"</td><td>"+ nextArrival +"</td><td>"+ minutesAway +"</td>")
-      
+
       // let resultsRow = $("<tr>").attr();
       // resultsRow.append($("<td>").html(snapshot.val().username));
       // resultsRow.append($("<td>").attr("src", snapshot.val().image));
 
       // $("#results-list").append(resultsRow);
       // $("#results-img").attr("src", snapshot.val().image);
-      
+
       // $(".age").text("Age:" + age);
       // $(".phone").text("phone#:" + phone);
       // $(".email").text("Email:" + email);
       // $(".Story").text(story);
-     
-
 
       // console.log(
       //   "------------------",
@@ -149,7 +161,7 @@ $(document.body).on("click", "#create", function() {
     .trim();
   var phone = $("#phone-input")
     .val()
-    .trim();  
+    .trim();
   var story = $("#story-input")
     .val()
     .trim();
@@ -165,8 +177,7 @@ $(document.body).on("click", "#create", function() {
   var towels = $("input:checkbox[name=towels]:checked").val() || null;
   var blanket = $("input:checkbox[name=blanket]:checked").val() || null;
   var shirt = $("input:checkbox[name=shirt]:checked").val() || null;
-  var toiletries =
-    $("input:checkbox[name=toiletries]:checked").val() || null;
+  var toiletries = $("input:checkbox[name=toiletries]:checked").val() || null;
   var socks = $("input:checkbox[name=socks]:checked").val() || null;
   var pots = $("input:checkbox[name=pots]:checked").val() || null;
   var bed = $("input:checkbox[name=bed]:checked").val() || null;
