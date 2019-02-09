@@ -35,7 +35,8 @@
   height: 300px;
 }
 .result {
-  height: 200px;
+  min-height: 400px;
+  max-height: auto;
   margin-bottom: 50px;
 }
 #myModal4 > div > div > div.modal-body > div.input-group {
@@ -152,4 +153,10 @@ input.checkbox-input {
 }
 .checkbox-input-text {
   float: left;
+}
+
+
+.resultsPic {
+  height: 100px;
+  width: 100px;
 }
