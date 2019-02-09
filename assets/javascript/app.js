@@ -68,6 +68,7 @@ var username = "Guest";
 $(document).on("click", "#search-button", function(event) {
   console.log("button clicked!");
   event.preventDefault();
+  $("#result-list").html("");
   var userRef = firebase.database().ref("Users");
 
   // getting the text value of the drop-down menu selected option.
@@ -86,11 +87,38 @@ $(document).on("click", "#search-button", function(event) {
       var optionText = $("#red-sort option:selected").text();
       console.log("this user needs " + optionText + ":", snapshot.val().username);
       var key = snapshot.key;
-      console.log(
-        "------------------",
-        // userRef.GetReference("Users").orderByChild(key)
-      );
-      console.log(snapshot);
+      var data = snapshot.val();
+      console.log(data);
+      var profImage = $("<img>").attr("src", data.image);
+      var SRC = data.image;
+      console.log("this is the image", profImage);
+      console.log(SRC);
+      // "<img src=snapshot.val().image + '.jpg'>";
+     
+      // append snapshot values to tbody
+      
+      $("#result-list").append("<tr id='"+ key + "'><td> <img src="+SRC + "></td><td>"+ (snapshot.val().username) + "</td><td>"+ "Needs " + (optionText) + "</td>")
+      // <td>"+ destination +"</td><td>"+ frequency +"</td><td>"+ nextArrival +"</td><td>"+ minutesAway +"</td>")
+      
+      // let resultsRow = $("<tr>").attr();
+      // resultsRow.append($("<td>").html(snapshot.val().username));
+      // resultsRow.append($("<td>").attr("src", snapshot.val().image));
+
+      // $("#results-list").append(resultsRow);
+      // $("#results-img").attr("src", snapshot.val().image);
+      
+      // $(".age").text("Age:" + age);
+      // $(".phone").text("phone#:" + phone);
+      // $(".email").text("Email:" + email);
+      // $(".Story").text(story);
+     
+
+
+      // console.log(
+      //   "------------------",
+      //   // userRef.GetReference("Users").orderByChild(key)
+      // );
+      // console.log(snapshot);
       // $("#append-search").html("user " + snapshot.key + " " + name);
     });
 });
