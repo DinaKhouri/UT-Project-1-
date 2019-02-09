@@ -22,6 +22,7 @@ var emailList = {};
 
 var username = "Guest";
 //google coordinates
+
 var myLatd;
 var myLongd;
 //Google maps function
