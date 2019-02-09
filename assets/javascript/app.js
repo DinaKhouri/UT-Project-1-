@@ -215,6 +215,15 @@ function firebaseCreate(email, password, username, age, phone, story, image) {
   showUser.attr("class", "navbar-text navbar-right");
   showUser.text("Signed in as " + username);
 
+  //show profile data
+  //travis u can add this to your code when u are done
+  $(".Name").text(name);
+  $(".age").text("Age:" + age);
+  $(".phone").text("phone#:" + phone);
+  $(".email").text("Email:" + email);
+  $(".Story").text(story);
+  $(".profile-img").attr("src", image);
+
   var logoutBtn = $("<button>");
   logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
   logoutBtn.attr("id", "logout");
