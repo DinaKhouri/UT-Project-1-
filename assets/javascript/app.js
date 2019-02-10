@@ -168,7 +168,7 @@ $(document).on("click", "#search-button", function(event) {
 var selectedFile;
 $("#file-select").change(handleFileUploadChange);
 function handleFileUploadChange(e) {
-    //selectedFile will keep track of whatever file user has input via the Choose File button.
+    //selectedFile will keep track of whatever file user has input via the create button.
   selectedFile = e.target.files[0]
   console.log("selectedFile", selectedFile);
 };
@@ -193,11 +193,12 @@ $(document.body).on("click", "#create", function() {
   var story = $("#story-input")
     .val()
     .trim();
-
+ 
 
   function handleFileUploadSubmit(e) {
     console.log("selectedFile.name", selectedFile.name);
-    const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
+    const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); 
+    //create a child directory called images, and place the file inside this directory
     uploadTask.on('state_changed', (snapshot) => {
       console.log('snapshot:', snapshot)
     // Observe state change events such as progress, pause, and resume
@@ -340,6 +341,7 @@ function firebaseCreate(
   $(".phone").text("phone#:" + phone);
   $(".email").text("Email:" + email);
   $(".Story").text(story);
+ 
   //$(".profile-img").attr("src", image);
 
   var logoutBtn = $("<button>");
