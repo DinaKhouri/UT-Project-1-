@@ -35,16 +35,16 @@ $(".show").on("click", function() {
     myLatd = myLat;
     myLongd = myLong;
 
-    var coords = new google.maps.LatLng(myLat, myLong);
+    // var coords = new google.maps.LatLng(myLat, myLong);
 
-    var mapOptions = {
-      zoom: 11,
-      center: coords,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+    // var mapOptions = {
+    //   zoom: 11,
+    //   center: coords,
+    //   mapTypeId: google.maps.MapTypeId.ROADMAP
+    //};
 
-    map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    marker = new google.maps.Marker({ map: map, position: coords });
+    // map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    // marker = new google.maps.Marker({ map: map, position: coords });
     // mapar.push(map);
     // markar.push(marker);
   }
@@ -312,14 +312,26 @@ function firebaseCreate(
   console.log(lat);
   console.log(long);
   $("#MapBtn").on("click", function() {
-    $("#mapshow").attr(
-      "src",
-      "https://maps.google.com/maps?q=" +
-        lat +
-        "," +
-        long +
-        "&hl=es;z=14&amp;output=embed"
-    );
+    var coords = new google.maps.LatLng(lat, long);
+
+    var mapOptions = {
+      zoom: 11,
+      center: coords,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    marker = new google.maps.Marker({ map: map, position: coords });
+    mapar.push(map);
+    markar.push(marker);
+    // $("#mapshow").attr(
+    //   "src",
+    //   "https://maps.google.com/maps?q=" +
+    //     lat +
+    //     "," +
+    //     long +
+    //     "&hl=es;z=14&amp;output=embed"
+    // );
   });
 
   var logoutBtn = $("<button>");
@@ -374,15 +386,39 @@ function firebaseLogin(email, password) {
           $(".email").text("Email:" + email);
           $(".Story").text(story);
           $(".profile-img").attr("src", image);
+          $("#MapBtn").on("click", function() {
+            var coords = new google.maps.LatLng(lat, long);
 
-          $("#mapshow").attr(
-            "src",
-            "https://maps.google.com/maps?q=" +
-              lat +
-              "," +
-              long +
-              "&hl=es;z=14&amp;output=embed"
-          );
+            var mapOptions = {
+              zoom: 11,
+              center: coords,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            map = new google.maps.Map(
+              document.getElementById("map"),
+              mapOptions
+            );
+            marker = new google.maps.Marker({ map: map, position: coords });
+            mapar.push(map);
+            markar.push(marker);
+            // $("#mapshow").attr(
+            //   "src",
+            //   "https://maps.google.com/maps?q=" +
+            //     lat +
+            //     "," +
+            //     long +
+            //     "&hl=es;z=14&amp;output=embed"
+            // );
+          });
+          // $("#mapshow").attr(
+          //   "src",
+          //   "https://maps.google.com/maps?q=" +
+          //     lat +
+          //     "," +
+          //     long +
+          //     "&hl=es;z=14&amp;output=embed"
+          // );
           var logoutBtn = $("<button>");
           logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
           logoutBtn.attr("id", "logout");
