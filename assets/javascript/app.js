@@ -240,6 +240,7 @@ $(document.body).on("click", "#signin", function() {
     return;
   } else {
     firebaseLogin(email, password);
+    $('#modalwindow').modal('hide')
   }
 });
 
@@ -249,6 +250,7 @@ $(document.body).on("click", "#logout", function() {
 
     return;
   } else {
+    window.location.replace("index.html");
     $("#userDisplay").empty();
 
     username = "Guest";
@@ -326,6 +328,8 @@ function firebaseCreate(
   var logoutBtn = $("<button>");
   logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
   logoutBtn.attr("id", "logout");
+  // logoutBtn.attr("href", "https://www.w3schools.com");
+  $("#logout").attr("href", "http://www.w3schools.com/")
   logoutBtn.text("Logout");
 
   $("#userDisplay").append(logoutBtn, showUser);
