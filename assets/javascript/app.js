@@ -1,37 +1,5 @@
 // replace with our own firebase config copy&paste
 // Google API added in the html
-// var mapar = {};
-// var markerar = {};
-
-// var myLatd;
-// var myLongd;
-// //Google maps function
-// $(".show").on("click", function() {
-//   x = navigator.geolocation;
-
-//   x.getCurrentPosition(success, failure);
-
-//   function success(position) {
-//     myLat = position.coords.latitude;
-//     myLong = position.coords.longitude;
-//     myLatd = myLat;
-//     myLongd = myLong;
-//     var coords = new google.maps.LatLng(myLat, myLong);
-
-//     var mapOptions = {
-//       zoom: 11,
-//       center: coords,
-//       mapTypeId: google.maps.MapTypeId.ROADMAP
-//     };
-
-//     map = new google.maps.Map(document.getElementById("map"), mapOptions);
-//     marker = new google.maps.Marker({ map: map, position: coords });
-//     // mapar.push(map);
-//     // markar.push(marker);
-//   }
-
-//   function failure() {}
-// });
 
 // Initialize Firebase
 var config = {
@@ -64,6 +32,7 @@ $(".show").on("click", function() {
   function success(position) {
     myLat = position.coords.latitude;
     myLong = position.coords.longitude;
+
     myLatd = myLat;
     myLongd = myLong;
 
@@ -141,9 +110,9 @@ $(document).on("click", "#search-button", function(event) {
       // append snapshot values to tbody
 
       $("#result-list").append(
-        "<tr id='" +
+        "<tr class='resultsclick' id='" +
           key +
-          "'><td> <img class='resultsPic' src=" +
+          "'><td> <img class=' profile-img resultsPic' src=" +
           SRC +
           "></td><td>" +
           snapshot.val().username +
@@ -154,7 +123,10 @@ $(document).on("click", "#search-button", function(event) {
       );
     });
 });
-
+//event listener for on click results
+$(document).on("click", ".resultsclick", function(event) {
+  console.log("clicked");
+});
 // -------------------------------------------------------------------------------------------------------
 
 // user login code starts here
@@ -223,7 +195,7 @@ $(document.body).on("click", "#create", function() {
       toaster
     );
   }
-  $('#modalwindow').modal('hide')
+  $("#modalwindow").modal("hide");
 });
 
 $(document.body).on("click", "#signin", function() {
@@ -324,7 +296,15 @@ function firebaseCreate(
   $(".email").text("Email:" + email);
   $(".Story").text(story);
   $(".profile-img").attr("src", image);
-
+  //added link to google maps from firebase
+  $(".map").attr(
+    "src",
+    "https://maps.google.com/maps?q=" +
+      lat +
+      ",'+" +
+      lon +
+      "&hl=es;z=14&amp;output=embed"
+  );
   var logoutBtn = $("<button>");
   logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
   logoutBtn.attr("id", "logout");
