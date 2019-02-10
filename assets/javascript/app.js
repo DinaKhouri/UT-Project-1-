@@ -109,7 +109,7 @@ $(document).on("click", "#search-button", function(event) {
       // append snapshot values to tbody
 
       $("#result-list").append(
-        "s<tr class='resultsclick' id='" +
+        "<tr class='resultsclick' id='" +
           key +
           "'><td> <img class=' profile-img resultsPic' src=" +
           SRC +
@@ -122,10 +122,10 @@ $(document).on("click", "#search-button", function(event) {
       );
     });
 });
-$(".resultsclick").on("click", function() {
+//event listener for on click results
+$(document).on("click", ".resultsclick", function(event) {
   console.log("clicked");
 });
-
 // -------------------------------------------------------------------------------------------------------
 
 // user login code starts here
