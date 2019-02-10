@@ -295,14 +295,14 @@ function firebaseCreate(
   $(".Story").text(story);
   $(".profile-img").attr("src", image);
   //added link to google maps from firebase
-  $(".map").attr(
-    "src",
-    "https://maps.google.com/maps?q=" +
-      lat +
-      ",'+" +
-      lon +
-      "&hl=es;z=14&amp;output=embed"
-  );
+  // $(".map").attr(
+  //   "src",
+  //   "https://maps.google.com/maps?q=" +
+  //     lat +
+  //     ",'+" +
+  //     lon +
+  //     "&hl=es;z=14&amp;output=embed"
+  // );
   var logoutBtn = $("<button>");
   logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
   logoutBtn.attr("id", "logout");
