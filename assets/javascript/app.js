@@ -324,14 +324,6 @@ function firebaseCreate(
     marker = new google.maps.Marker({ map: map, position: coords });
     mapar.push(map);
     markar.push(marker);
-    // $("#mapshow").attr(
-    //   "src",
-    //   "https://maps.google.com/maps?q=" +
-    //     lat +
-    //     "," +
-    //     long +
-    //     "&hl=es;z=14&amp;output=embed"
-    // );
   });
 
   var logoutBtn = $("<button>");
@@ -364,16 +356,16 @@ function firebaseLogin(email, password) {
         var lat = snapshot.val().lat;
         var long = snapshot.val().long;
         //it is console loging them correctly at this point , but cant seem to show them in the attr
-        console.log(lat);
-        console.log(long);
-        console.log(
-          "src",
-          "https://maps.google.com/maps?q=" +
-            lat +
-            "," +
-            long +
-            "&hl=es;z=14&amp;output=embed"
-        );
+        // console.log(lat);
+        // console.log(long);
+        // console.log(
+        //   "src",
+        //   "https://maps.google.com/maps?q=" +
+        //     lat +
+        //     "," +
+        //     long +
+        //     "&hl=es;z=14&amp;output=embed"
+        // );
         if (mail == email) {
           $("#userDisplay").empty();
 
@@ -402,23 +394,8 @@ function firebaseLogin(email, password) {
             marker = new google.maps.Marker({ map: map, position: coords });
             mapar.push(map);
             markar.push(marker);
-            // $("#mapshow").attr(
-            //   "src",
-            //   "https://maps.google.com/maps?q=" +
-            //     lat +
-            //     "," +
-            //     long +
-            //     "&hl=es;z=14&amp;output=embed"
-            // );
           });
-          // $("#mapshow").attr(
-          //   "src",
-          //   "https://maps.google.com/maps?q=" +
-          //     lat +
-          //     "," +
-          //     long +
-          //     "&hl=es;z=14&amp;output=embed"
-          // );
+
           var logoutBtn = $("<button>");
           logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
           logoutBtn.attr("id", "logout");
