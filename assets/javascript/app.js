@@ -197,8 +197,8 @@ $(document.body).on("click", "#create", function() {
   var image = $("#image-input")
     .val()
     .trim();
-  console.log(myLatd);
-  console.log(myLongd);
+  // console.log(myLatd);
+  // console.log(myLongd);
   // myLatd;
   // myLongd;
   var shoes = $("input:checkbox[name=shoes]:checked").val() || null;
@@ -340,15 +340,19 @@ function firebaseCreate(
   $(".email").text("Email:" + email);
   $(".Story").text(story);
   $(".profile-img").attr("src", image);
-  //added link to google maps from firebase
-  // $(".map").attr(
-  //   "src",
-  //   "https://maps.google.com/maps?q=" +
-  //     lat +
-  //     ",'+" +
-  //     lon +
-  //     "&hl=es;z=14&amp;output=embed"
-  // );
+  console.log(lat);
+  console.log(long);
+  $("#MapBtn").on("click", function() {
+    $("#mapshow").attr(
+      "src",
+      "https://maps.google.com/maps?q=" +
+        lat +
+        "," +
+        long +
+        "&hl=es;z=14&amp;output=embed"
+    );
+  });
+
   var logoutBtn = $("<button>");
   logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
   logoutBtn.attr("id", "logout");
@@ -376,7 +380,19 @@ function firebaseLogin(email, password) {
         var phone = snapshot.val().phone;
         var story = snapshot.val().story;
         var image = snapshot.val().image;
-
+        var lat = snapshot.val().lat;
+        var long = snapshot.val().long;
+        //it is console loging them correctly at this point , but cant seem to show them in the attr
+        console.log(lat);
+        console.log(long);
+        console.log(
+          "src",
+          "https://maps.google.com/maps?q=" +
+            lat +
+            "," +
+            long +
+            "&hl=es;z=14&amp;output=embed"
+        );
         if (mail == email) {
           $("#userDisplay").empty();
 
@@ -389,6 +405,15 @@ function firebaseLogin(email, password) {
           $(".email").text("Email:" + email);
           $(".Story").text(story);
           $(".profile-img").attr("src", image);
+
+          $("#mapshow").attr(
+            "src",
+            "https://maps.google.com/maps?q=" +
+              lat +
+              "," +
+              long +
+              "&hl=es;z=14&amp;output=embed"
+          );
           var logoutBtn = $("<button>");
           logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
           logoutBtn.attr("id", "logout");
