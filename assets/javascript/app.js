@@ -126,7 +126,39 @@ $(document).on("click", "#search-button", function(event) {
 //event listener for on click results
 $(document).on("click", ".resultsclick", function(event) {
   console.log("clicked");
+  window.location = "UserProfile.html";
+  firebaseLogin(email, password);
+  //  {
+  //   database.ref("Users").on("child_added", function(snapshot) {
+  //     var mail = snapshot.val().email;
+  //     var user = snapshot.val().username;
+  //     var age = snapshot.val().age;
+  //     var name = snapshot.val().name;
+  //     var phone = snapshot.val().phone;
+  //     var story = snapshot.val().story;
+  //     var image = snapshot.val().image;
+
+  //     var showUser = $("<p>");
+  //     showUser.attr("class", "navbar-text navbar-right");
+  //     showUser.text("Signed in as " + user);
+  //     $(".Name").text(name);
+  //     $(".age").text("Age:" + age);
+  //     $(".phone").text("phone#:" + phone);
+  //     $(".email").text("Email:" + email);
+  //     $(".Story").text(story);
+  //     $(".profile-img").attr("src", image);
+  //     var logoutBtn = $("<button>");
+  //     logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
+  //     logoutBtn.attr("id", "logout");
+  //     logoutBtn.text("Logout");
+
+  //     $("#userDisplay").append(logoutBtn, showUser);
+
+  //     console.log("You're logged in!");
+  //   });
+  //}
 });
+
 // -------------------------------------------------------------------------------------------------------
 
 // user login code starts here
@@ -212,6 +244,7 @@ $(document.body).on("click", "#signin", function() {
     return;
   } else {
     firebaseLogin(email, password);
+    $("#modalwindow").modal("hide");
   }
 });
 
@@ -221,6 +254,7 @@ $(document.body).on("click", "#logout", function() {
 
     return;
   } else {
+    window.location.replace("index.html");
     $("#userDisplay").empty();
 
     username = "Guest";
@@ -306,6 +340,8 @@ function firebaseCreate(
   var logoutBtn = $("<button>");
   logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
   logoutBtn.attr("id", "logout");
+  // logoutBtn.attr("href", "https://www.w3schools.com");
+  $("#logout").attr("href", "http://www.w3schools.com/");
   logoutBtn.text("Logout");
 
   $("#userDisplay").append(logoutBtn, showUser);
