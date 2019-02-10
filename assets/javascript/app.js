@@ -315,7 +315,7 @@ function firebaseCreate(
   showUser.text("Signed in as " + username);
 
   //show profile data
-  //travis u can add this to your code when u are done
+
   $(".Name").text(name);
   $(".age").text("Age:" + age);
   $(".phone").text("phone#:" + phone);
@@ -343,6 +343,11 @@ function firebaseLogin(email, password) {
       ) {
         var mail = snapshot.val().email;
         var user = snapshot.val().username;
+        var age = snapshot.val().age;
+        var name = snapshot.val().name;
+        var phone = snapshot.val().phone;
+        var story = snapshot.val().story;
+        var image = snapshot.val().image;
 
         if (mail == email) {
           $("#userDisplay").empty();
@@ -350,7 +355,12 @@ function firebaseLogin(email, password) {
           var showUser = $("<p>");
           showUser.attr("class", "navbar-text navbar-right");
           showUser.text("Signed in as " + user);
-
+          $(".Name").text(name);
+          $(".age").text("Age:" + age);
+          $(".phone").text("phone#:" + phone);
+          $(".email").text("Email:" + email);
+          $(".Story").text(story);
+          $(".profile-img").attr("src", image);
           var logoutBtn = $("<button>");
           logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
           logoutBtn.attr("id", "logout");
