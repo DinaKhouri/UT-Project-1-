@@ -109,9 +109,9 @@ $(document).on("click", "#search-button", function(event) {
       // append snapshot values to tbody
 
       $("#result-list").append(
-        "<tr id='" +
+        "s<tr class='resultsclick' id='" +
           key +
-          "'><td> <img class='resultsPic' src=" +
+          "'><td> <img class=' profile-img resultsPic' src=" +
           SRC +
           "></td><td>" +
           snapshot.val().username +
@@ -121,6 +121,9 @@ $(document).on("click", "#search-button", function(event) {
           "</td>"
       );
     });
+});
+$(".resultsclick").on("click", function() {
+  console.log("clicked");
 });
 
 // -------------------------------------------------------------------------------------------------------
