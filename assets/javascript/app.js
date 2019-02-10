@@ -223,6 +223,7 @@ $(document.body).on("click", "#create", function() {
       toaster
     );
   }
+  $('#modalwindow').modal('hide')
 });
 
 $(document.body).on("click", "#signin", function() {
