@@ -129,6 +129,29 @@ $(document).on("click", "#search-button", function(event) {
       );
       console.log(snapshot);
       // $("#append-search").html("user " + snapshot.key + " " + name);
+      var key = snapshot.key;
+      var data = snapshot.val();
+      console.log(data);
+      // var profImage = $("<img>").attr("src", data.image);
+      var SRC = data.image;
+      // console.log("this is the image", profImage);
+      console.log(SRC);
+      // "<img src=snapshot.val().image + '.jpg'>";
+
+      // append snapshot values to tbody
+
+      $("#result-list").append(
+        "<tr id='" +
+          key +
+          "'><td> <img class='resultsPic' src=" +
+          SRC +
+          "></td><td>" +
+          snapshot.val().username +
+          "</td><td>" +
+          "Needs " +
+          optionText +
+          "</td>"
+      );
     });
 });
 
@@ -254,7 +277,7 @@ function firebaseCreate(
   towels,
   blanket,
   shirt,
-  toiliteries,
+  toiletries,
   socks,
   pots,
   bed,
@@ -275,7 +298,7 @@ function firebaseCreate(
     towels: towels,
     blanket: blanket,
     shirt: shirt,
-    toiliteries: toiliteries,
+    toiletries: toiletries,
     socks: socks,
     pots: pots,
     bed: bed,
