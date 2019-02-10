@@ -14,6 +14,8 @@
 
     <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -118,9 +120,9 @@
                   type="text"
                   class="form-control"
                   id="image-input"
-                  placeholder="image link"
+                  placeholder="Image Link"
                 />
-                <button class="show btn btn-default" >Allow us to save your location so we can find you </button>
+                <button class="show btn btn-default" id='findLocationButton' ><i class="fa fa-map-marker" style='font-size:20px;color:red' aria-hidden="true"></i>  Allow us to save your location so we can find you </button>
                 </div>
                 <!-- check boxes in create account  -->
                 <div class="row">
@@ -359,19 +361,21 @@
             <div class="modal-body">
                 <div class="about ">
                   <!-- Penny you can edit your text here but make sure u change it in all pages -->
-                   <h5 class="about">
-                      Austin Giving Connection partners with local non-profits to find individuals who have the most critical needs and allows them to set up a giving profile which outlines their needs and tells their story.
-                      Those who wish to donate can search profiles and chose who receives their donation(s).  This provides a more personal connection between the two and allows opportunity for relationships to develop.  The person in need has the option to identify the means in which the donor communicates (e-mail, phone, text, or non-profit).
-                      The search function allows the user to find recipients based on their needs and their location.
-                      Recipient profiles will include: <br>
-                      •    teenagers who are aging out of the foster care system <br>
-                      •    chronically homeless <br>
-                      •    families who have experienced loss from natural disasters, such as floods or fires <br>
-                      •    families or individuals in transition due to illness or death <br>
-                      •    children in transition due to family instability <br>
-                      <br>
-                      Once recipients establish a profile, they can go in and update their information at any time.  Profile input is stored in a database so that the donator can identify if their needs or location changes.
-                   </h5>
+                  <h5 class="about">
+                    Austin Giving Connection partners with local non-profits to find individuals who have the most critical needs and allows them to set up a giving profile which outlines their needs and tells their story.
+                    Those who wish to donate can search profiles and chose who receives their donation(s).  This provides a more personal connection between the two and allows opportunity for relationships to develop.  The person in need has the option to identify the means in which the donor communicates (e-mail, phone, text, or non-profit).
+                    <br>
+                    The search function allows the user to find recipients based on their needs and their location.<br>
+                    <br>
+                    Recipient profiles will include: <br>
+                    •    Teenagers who are aging out of the foster care system <br>
+                    •    Chronically homeless <br>
+                    •    Families who have experienced loss from natural disasters, such as floods or fires <br>
+                    •    Families or individuals in transition due to illness or death <br>
+                    •    Children in transition due to family instability <br>
+                    <br>
+                    Once recipients establish a profile, they can go in and update their information at any time.  Profile input is stored in a database so that the donator can identify if their needs or location changes.
+                 </h5>
               </div>
             </div>
             <div class="modal-footer">

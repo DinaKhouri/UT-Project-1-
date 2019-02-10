@@ -160,3 +160,10 @@ input.checkbox-input {
   height: 100px;
   width: 100px;
 }
+
+#findLocationButton {
+  background-color: beige;
+}
+#findLocationButton:hover {
+  background-color: lightblue;
+}
