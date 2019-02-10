@@ -439,6 +439,18 @@ function logout(email, password) {
       return false;
     });
 }
+//pulling the images from the storage database 
+var fbRef = firebase.database().ref().child("images");
+
+
+fbRef.on("child_added", snap => {
+    //got the string URL from the database
+    var image = snap.child("images").val();
+
+   
+    $("#profileImage").append(image);
+
+});
 
 // user login code ends here
 
