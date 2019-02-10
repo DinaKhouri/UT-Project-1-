@@ -1,37 +1,5 @@
 // replace with our own firebase config copy&paste
 // Google API added in the html
-// var mapar = {};
-// var markerar = {};
-
-// var myLatd;
-// var myLongd;
-// //Google maps function
-// $(".show").on("click", function() {
-//   x = navigator.geolocation;
-
-//   x.getCurrentPosition(success, failure);
-
-//   function success(position) {
-//     myLat = position.coords.latitude;
-//     myLong = position.coords.longitude;
-//     myLatd = myLat;
-//     myLongd = myLong;
-//     var coords = new google.maps.LatLng(myLat, myLong);
-
-//     var mapOptions = {
-//       zoom: 11,
-//       center: coords,
-//       mapTypeId: google.maps.MapTypeId.ROADMAP
-//     };
-
-//     map = new google.maps.Map(document.getElementById("map"), mapOptions);
-//     marker = new google.maps.Marker({ map: map, position: coords });
-//     // mapar.push(map);
-//     // markar.push(marker);
-//   }
-
-//   function failure() {}
-// });
 
 // Initialize Firebase
 var config = {
@@ -223,7 +191,7 @@ $(document.body).on("click", "#create", function() {
       toaster
     );
   }
-  $('#modalwindow').modal('hide')
+  $("#modalwindow").modal("hide");
 });
 
 $(document.body).on("click", "#signin", function() {
