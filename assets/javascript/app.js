@@ -104,41 +104,31 @@ $(document).on("click", "#search-button", function(event) {
       );
     });
 });
-//event listener for on click results
 $(document).on("click", ".resultsclick", function(event) {
-  console.log("clicked");
-  window.location = "UserProfile.html";
-  firebaseLogin(email, password);
-  //  {
-  //   database.ref("Users").on("child_added", function(snapshot) {
-  //     var mail = snapshot.val().email;
-  //     var user = snapshot.val().username;
-  //     var age = snapshot.val().age;
-  //     var name = snapshot.val().name;
-  //     var phone = snapshot.val().phone;
-  //     var story = snapshot.val().story;
-  //     var image = snapshot.val().image;
-
-  //     var showUser = $("<p>");
-  //     showUser.attr("class", "navbar-text navbar-right");
-  //     showUser.text("Signed in as " + user);
-  //     $(".Name").text(name);
-  //     $(".age").text("Age:" + age);
-  //     $(".phone").text("phone#:" + phone);
-  //     $(".email").text("Email:" + email);
-  //     $(".Story").text(story);
-  //     $(".profile-img").attr("src", image);
-  //     var logoutBtn = $("<button>");
-  //     logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
-  //     logoutBtn.attr("id", "logout");
-  //     logoutBtn.text("Logout");
-
-  //     $("#userDisplay").append(logoutBtn, showUser);
-
-  //     console.log("You're logged in!");
-  //   });
-  //}
+  console.log("clicked!");
+  var key = $(".resultsclick").attr("id");
+  console.log(key);
+  event.preventDefault();
+  console.log("working");
+  event.userRef
+    .child(key)
+    .once("value")
+    .then(function(response) {
+      var email = response.val().email;
+      var password = response.val().password;
+      console.log(email);
+      console.log(password);
+      firebaseLogin(email, password);
+    });
 });
+//event listener for on click results
+// $(document).on("click", ".resultsclick", function(event) {
+//   console.log("clicked");
+//   window.location = "UserProfile.html";
+//   var email= ;
+//   var password=;
+//   firebaseLogin(email, password);
+// });
 
 // -------------------------------------------------------------------------------------------------------
 
