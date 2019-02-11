@@ -93,6 +93,10 @@ $(document).on("click", "#search-button", function(event) {
       $("#result-list").append(
         "<tr class='resultsclick' id='" +
           key +
+          "' email='" +
+          snapshot.val().email +
+          "' password='" +
+          snapshot.val().password +
           "'><td> <img class=' profile-img resultsPic' src=" +
           SRC +
           "></td><td>" +
@@ -107,19 +111,24 @@ $(document).on("click", "#search-button", function(event) {
 $(document).on("click", ".resultsclick", function(event) {
   console.log("clicked!");
   var key = $(".resultsclick").attr("id");
+  var email = $(".resultsclick").attr("email");
+  var password = $(".resultsclick").attr("password");
   console.log(key);
-  event.preventDefault();
-  console.log("working");
-  event.userRef
-    .child(key)
-    .once("value")
-    .then(function(response) {
-      var email = response.val().email;
-      var password = response.val().password;
-      console.log(email);
-      console.log(password);
-      firebaseLogin(email, password);
-    });
+  console.log(email);
+  console.log(password);
+  // event.preventDefault();
+  // console.log("working");
+  // event.userRef
+  //   .child(key)
+  //   .once("value")
+  //   .then(function(response) {
+  //     console.log("response");
+  //     var email = response.val().email;
+  //     var password = response.val().password;
+  //     console.log(email);
+  //     console.log(password);
+  //     firebaseLogin(email, password);
+  //   });
 });
 //event listener for on click results
 // $(document).on("click", ".resultsclick", function(event) {
