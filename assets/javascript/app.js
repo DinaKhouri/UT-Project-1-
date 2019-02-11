@@ -133,22 +133,20 @@ $(document).on("click", "#popupBtn", function(event) {
   $(".Story").text(story);
   $(".profile-imgpop").attr("src", image);
 
-  // $("#MapBtnpopup").on("click", function() {
-  //   lat = $(this).attr("lat");
-  //   long = $(this).attr("long");
-  //   var coords = new google.maps.LatLng(lat, long);
+  $("#MapBtnpopup").on("click", function() {
+    var coords = new google.maps.LatLng(lat, long);
 
-  //   var mapOptions = {
-  //     zoom: 11,
-  //     center: coords,
-  //     mapTypeId: google.maps.MapTypeId.ROADMAP
-  //   };
+    var mapOptions = {
+      zoom: 11,
+      center: coords,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
 
-  //   map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  //   marker = new google.maps.Marker({ map: map, position: coords });
-  //   mapar.push(map);
-  //   markar.push(marker);
-  // });
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    marker = new google.maps.Marker({ map: map, position: coords });
+    mapar.push(map);
+    markar.push(marker);
+  });
 });
 
 // user login code starts here
