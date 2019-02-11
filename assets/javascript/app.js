@@ -125,6 +125,7 @@ $(document).on("click", "#search-button", function(event) {
       );
     });
 });
+
 $(document).on("click", "#popupBtn", function(event) {
   //grab info from button attributes
   var name = $(this).attr("name");
@@ -143,9 +144,11 @@ $(document).on("click", "#popupBtn", function(event) {
   $(".phone").text("phone#:" + phone);
   $(".email").text("Email:" + email);
   $(".Story").text(story);
-  $(".profile-img").attr("src", image);
+  $(".profile-imgpop").attr("src", image);
 
   $("#MapBtnpopup").on("click", function() {
+    var lat = $(this).attr("lat");
+    var long = $(this).attr("long");
     var coords = new google.maps.LatLng(lat, long);
 
     var mapOptions = {
