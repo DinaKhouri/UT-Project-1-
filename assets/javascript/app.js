@@ -44,7 +44,7 @@ $(".show").on("click", function() {
 $(document).on("click", "#search-button", function(event) {
   console.log("search button clicked!");
   event.preventDefault();
-  $("#result-list").html("");
+  $(".result").html("");
   var userRef = firebase.database().ref("Users");
 
   // getting the text value of the drop-down menu selected option.
