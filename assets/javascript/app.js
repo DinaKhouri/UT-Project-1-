@@ -78,7 +78,7 @@ $(document).on("click", "#search-button", function(event) {
 
       // append snapshot values to tbody
 
-      $("#result-list").append(
+      $(".result").append(
         "<button type='button' id='popupBtn' class=' btn btn-lg'  data-toggle='modal' data-target='#popupmodal'" +
           "name='" +
           snapshot.val().username +
@@ -97,16 +97,16 @@ $(document).on("click", "#search-button", function(event) {
           "' image='" +
           snapshot.val().image +
           "'>" +
-          " <tr class='resultsclick'  id='" +
-          key +
-          "' password='" +
-          snapshot.val().password +
-          "'><td> <img class='profile-img resultsPic' src=" +
+          // " <tr id='" +
+          // key +
+          // "' password='" +
+          // snapshot.val().password +
+          //"'>
+          "<td><img class='profile-img resultsPic' src=" +
           SRC +
-          "></td><td class='usertd'>" +
+          "></td><td>" +
           snapshot.val().username +
           "</td><td>" +
-          "Needs " +
           optionText +
           "</td></button><br>"
       );

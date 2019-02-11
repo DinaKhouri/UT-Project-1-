@@ -187,11 +187,18 @@ input.checkbox-input {
 .result {
   overflow-y: scroll;
 }
+.usertd,
+.needstd {
+  margin-right: 100px;
+}
 .resultsPic {
   height: 100px;
   width: 100px;
+  margin-right: 100px;
 }
-
+/* .resultsclick {
+  margin-right: 100px;
+} */
 #findLocationButton {
   background-color: beige;
 }
