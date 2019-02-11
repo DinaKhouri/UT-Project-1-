@@ -123,6 +123,9 @@ $(document).on("click", ".resultsclick", function(event) {
     $(".red").removeClass("red");
     $(event.target).addClass("red");
 });
+
+var key = $(this).attr("id");
+
 // var userRef = firebase.database().ref("Users");
 //** let Bkey = $('#'+key).val();
 // let okey = $(this).attr('id');
@@ -130,7 +133,7 @@ $(document).on("click", ".resultsclick", function(event) {
 // $('#'+key).val()
   
   // need for this to be specific to clicked division, not all divisions
-  var key = $(this).attr("id");
+  
   // var key = $(".resultsclick").val().key;
   // var key = $(".resultsclick").text("id");
   // var email = $(".resultsclick").attr("email");
@@ -145,7 +148,7 @@ $(document).on("click", ".resultsclick", function(event) {
   // window.location = "UserProfile.html";
 
   var userRef = firebase.database().ref("Users");
-  userRef.orderByChild(key).equalTo(key).on("child_added", function(snapshot) {
+  userRef.orderByKey().equalTo(key).on("child_added", function(snapshot) {
     // var key = snapshot.key;
     var data = snapshot.val();
     var mail = snapshot.val().email;
@@ -157,29 +160,45 @@ $(document).on("click", ".resultsclick", function(event) {
     var image = snapshot.val().image;
     var lat = snapshot.val().lat;
     var long = snapshot.val().long;
-    
-    var myWindow = window.open("", "", "width=700, height=1000");
-    myWindow.document.write(key).html();
 
-      $("#testu").append(
-        "<tr class='fullProfile' id='" +
-          key +
-          "' email='" +
-          mail +
-          "' password='" +
-          lat +
-          "'><td> <img class=' profile-img resultsPic' src=" +
-          SRC +
-          "></td><td>" +
-          user +
-          "</td><td>" +
-          "Needs " +
-          age +
-          "</td>"
-      );
+    var myWindow = window.open("", "myWindow1", "width=700, height=1000");
+    // myWindow.document.write(key, mail, user, age).html();
+
+    myWindow.document.write('<html><head><title>User Profile</title><link rel="stylesheet" type="text/css" href="style.css"></head><body>');
+    myWindow.document.write(key, "<br>", mail, "<br>", user, "<br>", age).html();
+    myWindow.document.write($("<div class='email'> <p> Hello Friends</p> </div>"));
+    // $(myWindow)
+    // myWindow.document.write($("#content").html());
+    myWindow.document.write('</body></html>');
+
+          $(".Name").text(name);
+          $(".age").text("Age:" + age);
+          $(".phone").text("phone#:" + phone);
+          $(".email").text("Email:" + email);
+          $(".Story").text(story);
+          $(".profile-img").attr("src", image);
+    
+
+      // $("#testu").append(
+      //   "<tr class='fullProfile' id='" +
+      //     key +
+      //     "' email='" +
+      //     mail +
+      //     "' password='" +
+      //     lat +
+      //     "'><td> <img class=' profile-img resultsPic' src=" +
+      //     SRC +
+      //     "></td><td>" +
+      //     user +
+      //     "</td><td>" +
+      //     "Needs " +
+      //     age +
+      //     "</td>"
+      // );
 
 
   });
+  
 
 })
 
@@ -565,8 +584,6 @@ function firebaseCreate(
   var logoutBtn = $("<button>");
   logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
   logoutBtn.attr("id", "logout");
-  // logoutBtn.attr("href", "https://www.w3schools.com");
-  $("#logout").attr("href", "http://www.w3schools.com/");
   logoutBtn.text("Logout");
 
   $("#userDisplay").append(logoutBtn, showUser);
