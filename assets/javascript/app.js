@@ -173,13 +173,13 @@ function handleFileUploadChange(e) {
   console.log("selectedFile", selectedFile);
 };
 //grab from firebase storage
-//storageRef.child('images/photo_1.png').getDownloadURL().then(function(url) {
-  //var test = url;
- // document.querySelector('img').src = test;
-//}).catch(function(error) {
-//});
-//var test = "ut-project-1-c4752.appspot.com";
-//document.querySelector('img').src = test;
+storageRef.child('images').getDownloadURL().then(function(url) {
+  var test = url;
+  document.querySelector('img').src = test;
+}).catch(function(error) {
+});
+var test = "ut-project-1-c4752.appspot.com";
+document.querySelector('img').src = test;
 
 
 // user login code starts here
