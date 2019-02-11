@@ -184,7 +184,9 @@ input.checkbox-input {
 .checkbox-input-text {
   float: left;
 }
-
+.result {
+  overflow-y: scroll;
+}
 .resultsPic {
   height: 100px;
   width: 100px;
