@@ -145,7 +145,7 @@ $(document).on("click", "#popupBtn", function(event) {
   $(".Story").text(story);
   $(".profile-img").attr("src", image);
 
-  $("#MapBtn").on("click", function() {
+  $("#MapBtnpopup").on("click", function() {
     var coords = new google.maps.LatLng(lat, long);
 
     var mapOptions = {
