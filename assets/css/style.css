@@ -21,6 +21,14 @@
 .about {
   font-family: "Noto Serif SC", serif;
 }
+.modalbody {
+  background-image: url(../images/background.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
 .my-container {
   padding: 3%;
   background-color: whitesmoke;
@@ -31,12 +39,22 @@
   -moz-box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
 }
+.my-containerpopup {
+  padding: 3%;
+  background-color: whitesmoke;
+  height: 500px;
+  width: 500px;
+  margin-top: 3%;
+  -webkit-box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
+}
 .search {
   height: 300px;
 }
 .result {
   min-height: 700px;
-  
+
   margin-bottom: 50px;
 }
 #myModal4 > div > div > div.modal-body > div.input-group {
@@ -154,7 +172,6 @@ input.checkbox-input {
 .checkbox-input-text {
   float: left;
 }
-
 
 .resultsPic {
   height: 100px;

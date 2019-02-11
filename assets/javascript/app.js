@@ -92,206 +92,268 @@ $(document).on("click", "#search-button", function(event) {
       // append snapshot values to tbody
 
       $("#result-list").append(
-        "<tr class='resultsclick' id='" +
-          key +
+        "<button type='button' id='popupBtn' class='navbar-left btn btn-lg'  data-toggle='modal' data-target='#popupmodal'" +
+          "name='" +
+          snapshot.val().username +
+          "' age='" +
+          snapshot.val().age +
+          "' phone='" +
+          snapshot.val().phone +
+          "' lat='" +
+          snapshot.val().lat +
+          "' long='" +
+          snapshot.val().long +
+          "' story='" +
+          snapshot.val().story +
           "' email='" +
           snapshot.val().email +
+          "' image='" +
+          snapshot.val().image +
+          "'>" +
+          " <tr class='resultsclick'  id='" +
+          key +
           "' password='" +
           snapshot.val().password +
-          "'><td> <img class=' profile-img resultsPic' src=" +
+          "'><td> <img class='profile-img resultsPic' src=" +
           SRC +
           "></td><td>" +
           snapshot.val().username +
           "</td><td>" +
           "Needs " +
           optionText +
-          "</td>"
+          "</td> </button>"
       );
     });
 });
+$(document).on("click", "#popupBtn", function(event) {
+  //grab info from button attributes
+  var name = $(this).attr("name");
+  var age = $(this).attr("age");
+  var phone = $(this).attr("phone");
+  var lat = $(this).attr("lat");
+  var long = $(this).attr("long");
+  var story = $(this).attr("story");
+  var email = $(this).attr("email");
+  var image = $(this).attr("image");
+  console.log(lat);
+  console.log(long);
+  //show info in html
+  $(".Name").text(name);
+  $(".age").text("Age:" + age);
+  $(".phone").text("phone#:" + phone);
+  $(".email").text("Email:" + email);
+  $(".Story").text(story);
+  $(".profile-img").attr("src", image);
 
+  $("#MapBtn").on("click", function() {
+    var coords = new google.maps.LatLng(lat, long);
+
+    var mapOptions = {
+      zoom: 11,
+      center: coords,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    marker = new google.maps.Marker({ map: map, position: coords });
+    mapar.push(map);
+    markar.push(marker);
+  });
+});
 // Optional design tool that highlights in red your current mouse target:
-// 
+//
 // $('body').mousemove(function(event){
 //   $(".red").removeClass("red");
 //   $(event.target).addClass("red");
 // });
 
-
-
 // *********************************
 // *********************************
 // RESULTS TO FULL PROFILE FUNCTION
 // *********************************
-$(document).on("click", ".resultsclick", function(event) {
-  console.log("clicked!");
-  // window.location.replace("UserProfile.html");
-  // mouse over animation
-  var key = $(this).attr("id");
-  console.log(key);
+// $(document).on("click", ".resultsclick", function(event) {
+//   console.log("clicked!");
+//   // window.location.replace("UserProfile.html");
+//   // mouse over animation
+//   var key = $(this).attr("id");
+//   console.log(key);
 
 // var userRef = firebase.database().ref("Users");
 //** let Bkey = $('#'+key).val();
 // let okey = $(this).attr('id');
 // database.ref("Users").child(Key).remove();
 // $('#'+key).val()
-  
-  // need for this to be specific to clicked division, not all divisions
-  
-  // var key = $(".resultsclick").val().key;
-  // var key = $(".resultsclick").text("id");
-  // var email = $(".resultsclick").attr("email");
-  // var password = $(".resultsclick").attr("password");
 
-  
-  // setTimeout(function(){ myWindow.close() }, 3000);  
-  // console.log(okey);
-  // console.log(email);
-  // console.log(password);
-  
+// need for this to be specific to clicked division, not all divisions
 
-  var userRef = firebase.database().ref("Users");
-  userRef.orderByKey().equalTo(key).on("child_added", function(snapshot) {
-    // var key = snapshot.key;
-    var data = snapshot.val();
-    var mail = snapshot.val().email;
-    var user = snapshot.val().username;
-    var age = snapshot.val().age;
-    var phone = snapshot.val().phone;
-    var story = snapshot.val().story;
-    var image = snapshot.val().image;
-    var lat = snapshot.val().lat;
-    var long = snapshot.val().long;
+// var key = $(".resultsclick").val().key;
+// var key = $(".resultsclick").text("id");
+// var email = $(".resultsclick").attr("email");
+// var password = $(".resultsclick").attr("password");
 
-    console.log(name);
+// setTimeout(function(){ myWindow.close() }, 3000);
+// console.log(okey);
+// console.log(email);
+// console.log(password);
 
-    var newWindow;
-    newWindow = window.open("", "newWindow", "width=600, height=900");
+//   var userRef = firebase.database().ref("Users");
+//   userRef
+//     .orderByKey()
+//     .equalTo(key)
+//     .on("child_added", function(snapshot) {
+//       // var key = snapshot.key;
+//       var data = snapshot.val();
+//       var mail = snapshot.val().email;
+//       var user = snapshot.val().username;
+//       var age = snapshot.val().age;
+//       var phone = snapshot.val().phone;
+//       var story = snapshot.val().story;
+//       var image = snapshot.val().image;
+//       var lat = snapshot.val().lat;
+//       var long = snapshot.val().long;
 
-  var windowInsertVar = '';
+//       console.log(name);
 
-    windowInsertVar += '\x3Cscript>';
-    
-    windowInsertVar += 'function resizeText(change) {';
-    windowInsertVar += 'switch (change) {';
-    windowInsertVar += 'case 1:';
-    // windowInsertVar += 'document.getElementById(\'textToBeResized\').style.fontSize = "80%"\;';
-    windowInsertVar += 'break\;';
-    windowInsertVar += 'case 2:';
-    // windowInsertVar += 'document.getElementById(\'textToBeResized\').style.fontSize = "120%"\;';
-    windowInsertVar += 'break\;';
-    windowInsertVar += 'default:';
-    // windowInsertVar += 'alert(\'Error\')\;';
-    windowInsertVar += '<title>User Profile</title>';
-    windowInsertVar += 'break\;';
-    windowInsertVar += '}';
-    windowInsertVar += '}';
-    windowInsertVar += '\x3C/script>';
-    windowInsertVar += '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>'
-    // windowInsertVar += '<link rel="stylesheet" type="text/css" href="style.css"></link>'
-    // windowInsertVar += '<button onclick="resizeText(1)">-</button> Text size <button onclick="resizeText(2)">+</button>)\;';
-    windowInsertVar += '<div id="windowHead"><h1>Austin Giving Connection</h1></div>';
-    windowInsertVar += '<div class="container my-container"><div class="row"><div class="col-sm-4"><img class="profile-img row" height="400px" width="400px" src="' + image +'"/><h2 id="name-row">Username: '+ user + '</h2><h3 class="age row">Age: '+ age + '</h3><h3 class="phone row">Phone#: '+ phone + '</h3><h3 class="email row">Email: '+ mail + '</h3><h3 id="name-row">My Story: '+ story + '</h3></div></div></div>'
-    windowInsertVar += '<button onclick=""><i class="fa fa-map-marker" style="font-size:20px;color:red" aria-hidden="true"></i> Find on Map</button>';
-    // windowInsertVar += '<button onclick="', getSpot(lat, long) +'">get Spot</button>';
-    // windowInsertVar += '<div class="container my-container"><div class="row"><div class="col-sm-4"><h2 id="name-row">Needs: '+ needs + '</h2>'
+//       var newWindow;
+//       newWindow = window.open("", "newWindow", "width=600, height=900");
 
-    // windowInsertVar += '$("#MapBtn").on("click", 
+//       var windowInsertVar = "";
 
-    function getSpot(lat, long) {
-      console.log("getSpot button clicked!");
-      var coords = new google.maps.LatLng(lat, long);
+//       windowInsertVar += "\x3Cscript>";
 
-      var mapOptions = {
-        zoom: 11,
-        center: coords,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
+//       windowInsertVar += "function resizeText(change) {";
+//       windowInsertVar += "switch (change) {";
+//       windowInsertVar += "case 1:";
+//       // windowInsertVar += 'document.getElementById(\'textToBeResized\').style.fontSize = "80%"\;';
+//       windowInsertVar += "break;";
+//       windowInsertVar += "case 2:";
+//       // windowInsertVar += 'document.getElementById(\'textToBeResized\').style.fontSize = "120%"\;';
+//       windowInsertVar += "break;";
+//       windowInsertVar += "default:";
+//       // windowInsertVar += 'alert(\'Error\')\;';
+//       windowInsertVar += "<title>User Profile</title>";
+//       windowInsertVar += "break;";
+//       windowInsertVar += "}";
+//       windowInsertVar += "}";
+//       windowInsertVar += "\x3C/script>";
+//       windowInsertVar +=
+//         '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>';
+//       // windowInsertVar += '<link rel="stylesheet" type="text/css" href="style.css"></link>'
+//       // windowInsertVar += '<button onclick="resizeText(1)">-</button> Text size <button onclick="resizeText(2)">+</button>)\;';
+//       windowInsertVar +=
+//         '<div id="windowHead "><h1>Austin Giving Connection</h1></div>';
+//       windowInsertVar +=
+//         '<div class="container my-container"><div class="row"><div class="col-sm-4"><img class="profile-img row" height="400px" width="400px" src="' +
+//         image +
+//         '"/><h2 id="name-row">Username: ' +
+//         user +
+//         '</h2><h3 class="age row">Age: ' +
+//         age +
+//         '</h3><h3 class="phone row">Phone#: ' +
+//         phone +
+//         '</h3><h3 class="email row">Email: ' +
+//         mail +
+//         '</h3><h3 id="name-row">My Story: ' +
+//         story +
+//         "</h3></div></div></div>";
+//       windowInsertVar +=
+//         '<button onclick=""><i class="fa fa-map-marker" style="font-size:20px;color:red" aria-hidden="true"></i> Find on Map</button>';
+//       // windowInsertVar += '<button onclick="', getSpot(lat, long) +'">get Spot</button>';
+//       // windowInsertVar += '<div class="container my-container"><div class="row"><div class="col-sm-4"><h2 id="name-row">Needs: '+ needs + '</h2>'
 
-      map = new google.maps.Map(
-        document.getElementById("map"),
-        mapOptions
-      );
-      marker = new google.maps.Marker({ map: map, position: coords });
-      mapar.push(map);
-      markar.push(marker);
-    };
+//       // windowInsertVar += '$("#MapBtn").on("click",
 
-    newWindow.document.write(windowInsertVar);
-    newWindow.document.write('<html><head><title>User Profile</title><link rel="stylesheet" type="text/css" href="style.css"></head><body>');
-    console.log(key);
-  });
-});
+//       function getSpot(lat, long) {
+//         console.log("getSpot button clicked!");
+//         var coords = new google.maps.LatLng(lat, long);
 
-  // firebasePull(key);
+//         var mapOptions = {
+//           zoom: 11,
+//           center: coords,
+//           mapTypeId: google.maps.MapTypeId.ROADMAP
+//         };
 
-  // function firebasePull(key) {
-  //   // database.ref("Users").on("child_added", function(snapshot) {
-  
-  //       var userRef = firebase.database().ref("Users");
-  //       userRef.orderByChild(key).equalTo(key).on("child_added", function(snapshot) {
-        // var optionText = $("#red-sort option:selected").text();
-        // console.log("this user needs " + optionText + ":", snapshot.val().username);
-        
+//         map = new google.maps.Map(document.getElementById("map"), mapOptions);
+//         marker = new google.maps.Marker({ map: map, position: coords });
+//         mapar.push(map);
+//         markar.push(marker);
+//       }
 
-        // NEED
-          // var mail = snapshot.val().email;
-          // var user = snapshot.val().username;
-          // var age = snapshot.val().age;
-          // var name = snapshot.val().name;
-          // var phone = snapshot.val().phone;
-          // var story = snapshot.val().story;
-          // var image = snapshot.val().image;
-          // var lat = snapshot.val().lat;
-          // var long = snapshot.val().long;
+//       newWindow.document.write(windowInsertVar);
+//       newWindow.document.write(
+//         '<html><head><title>User Profile</title><link rel="stylesheet" type="text/css" href="style.css"></head><body>'
+//       );
+//       console.log(key);
+//     });
+// });
 
-  
-          //   var showUser = $("<p>");
-          //   showUser.attr("class", "navbar-text navbar-right");
-          //   showUser.text("Signed in as " + user);
-          //   $(".Name").text(name);
-          //   $(".age").text("Age:" + age);
-          //   $(".phone").text("phone#:" + phone);
-          //   $(".email").text("Email:" + email);
-          //   $(".Story").text(story);
-          //   $(".profile-img").attr("src", image);
+// firebasePull(key);
 
-            // NEED
-  
-            // $("#MapBtn").on("click", function() {
-            //   var coords = new google.maps.LatLng(lat, long);
-  
-            //   var mapOptions = {
-            //     zoom: 11,
-            //     center: coords,
-            //     mapTypeId: google.maps.MapTypeId.ROADMAP
-            //   };
-  
-            //   map = new google.maps.Map(
-            //     document.getElementById("map"),
-            //     mapOptions
-            //   );
-            //   marker = new google.maps.Marker({ map: map, position: coords });
-            //   mapar.push(map);
-            //   markar.push(marker);
-            // });
+// function firebasePull(key) {
+//   // database.ref("Users").on("child_added", function(snapshot) {
 
-            // var myWindow = window.open("", "", "width=700, height=1000");
-            // myWindow.document.write(key).html();
-            // myWindow.document.write($(".resultsclick").html());
-  
-            // var logoutBtn = $("<button>");
-            // logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
-            // logoutBtn.attr("id", "logout");
-            // logoutBtn.text("Logout");
-  
-            // $("#userDisplay").append(logoutBtn, showUser);
-  
-            // console.log("You're logged in!");
-          // })
-  //       })
-  //     };
-  // }); 
+//       var userRef = firebase.database().ref("Users");
+//       userRef.orderByChild(key).equalTo(key).on("child_added", function(snapshot) {
+// var optionText = $("#red-sort option:selected").text();
+// console.log("this user needs " + optionText + ":", snapshot.val().username);
+
+// NEED
+// var mail = snapshot.val().email;
+// var user = snapshot.val().username;
+// var age = snapshot.val().age;
+// var name = snapshot.val().name;
+// var phone = snapshot.val().phone;
+// var story = snapshot.val().story;
+// var image = snapshot.val().image;
+// var lat = snapshot.val().lat;
+// var long = snapshot.val().long;
+
+//   var showUser = $("<p>");
+//   showUser.attr("class", "navbar-text navbar-right");
+//   showUser.text("Signed in as " + user);
+//   $(".Name").text(name);
+//   $(".age").text("Age:" + age);
+//   $(".phone").text("phone#:" + phone);
+//   $(".email").text("Email:" + email);
+//   $(".Story").text(story);
+//   $(".profile-img").attr("src", image);
+
+// NEED
+
+// $("#MapBtn").on("click", function() {
+//   var coords = new google.maps.LatLng(lat, long);
+
+//   var mapOptions = {
+//     zoom: 11,
+//     center: coords,
+//     mapTypeId: google.maps.MapTypeId.ROADMAP
+//   };
+
+//   map = new google.maps.Map(
+//     document.getElementById("map"),
+//     mapOptions
+//   );
+//   marker = new google.maps.Marker({ map: map, position: coords });
+//   mapar.push(map);
+//   markar.push(marker);
+// });
+
+// var myWindow = window.open("", "", "width=700, height=1000");
+// myWindow.document.write(key).html();
+// myWindow.document.write($(".resultsclick").html());
+
+// var logoutBtn = $("<button>");
+// logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
+// logoutBtn.attr("id", "logout");
+// logoutBtn.text("Logout");
+
+// $("#userDisplay").append(logoutBtn, showUser);
+
+// console.log("You're logged in!");
+// })
+//       })
+//     };
+// });
 
 // -------------------------------------------------------------------------------------------------------
 
@@ -364,7 +426,6 @@ $(document.body).on("click", "#create", function() {
   $("#modalwindow").modal("hide");
 });
 
-
 // SIGN IN FUNCTION
 $(document.body).on("click", "#signin", function() {
   var email = $("#emailLogin")
@@ -383,8 +444,6 @@ $(document.body).on("click", "#signin", function() {
     $("#modalwindow").modal("hide");
   }
 });
-
-
 
 // LOGOUT FUNCTION
 $(document.body).on("click", "#logout", function() {
@@ -503,9 +562,6 @@ function firebaseCreate(
 
   console.log("You created an account!");
 }
-
-
-
 
 // FIREBASE LOGIN FUNCTION
 function firebaseLogin(email, password) {

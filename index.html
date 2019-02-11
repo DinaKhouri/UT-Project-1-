@@ -41,6 +41,7 @@
 <div class="pagetitle">
   <img class="logo navbar-left" src="assets/images/logo.png"><h4 class="navbar-text">Austin Giving Connection</h4>
 </div>
+
       <!-- Modal About -->
       <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -129,7 +130,59 @@
 </div>
 
         </div>
-    
+    <!-- popupmodal -->
+ <div
+ class="modal fade"
+ id="popupmodal"
+ tabindex="-1"
+ role="dialog"
+ aria-labelledby="myModalLabel"
+>
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">User Profile</h4>
+      </div>
+      <div class="modal-body modalbody">
+        <!-- added a class="map" -->
+           <div class="container my-containerpopup">
+              <div class="row">
+                <div class="col-sm-4">
+                  <img
+                    class="profile-img row"
+                    src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                  />
+                  <h3 class="Name row">My Name</h3>
+                  <h5 class="age row">Age:</h5>
+                  <h5 class="phone row">Phone#:</h5>
+                  <h5 class="email row">Email:</h5>
+                 
+                  <!-- Find me modal -->
+                  <div class="row">
+                        <button
+                        type="button"
+                        id="MapBtn"
+                        class="navbar-left btn btn-primary btn-lg"
+                        data-toggle="modal"
+                        data-target="#myModal5"
+                      >
+                    <img
+                      class="find-me"
+                      src="https://www.ditoweb.com/wp-content/uploads/2016/05/places-api.png"
+                    />
+                    <h5 class="find-me-text">Find me</h5></div>
+      
+     
+    </div>
+</div>
     </body>
 <script src="assets/javascript/app.js"></script>
 
