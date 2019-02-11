@@ -79,7 +79,7 @@ $(document).on("click", "#search-button", function(event) {
       // append snapshot values to tbody
 
       $("#result-list").append(
-        "<button type='button' id='popupBtn' class='navbar-left btn btn-lg'  data-toggle='modal' data-target='#popupmodal'" +
+        "<button type='button' id='popupBtn' class=' btn btn-lg'  data-toggle='modal' data-target='#popupmodal'" +
           "name='" +
           snapshot.val().username +
           "' age='" +
@@ -103,12 +103,12 @@ $(document).on("click", "#search-button", function(event) {
           snapshot.val().password +
           "'><td> <img class='profile-img resultsPic' src=" +
           SRC +
-          "></td><td>" +
+          "></td><td class='usertd'>" +
           snapshot.val().username +
           "</td><td>" +
           "Needs " +
           optionText +
-          "</td> </button>"
+          "</td></button><br>"
       );
     });
 });
@@ -125,11 +125,12 @@ $(document).on("click", "#popupBtn", function(event) {
   var image = $(this).attr("image");
   console.log(lat);
   console.log(long);
+  console.log(story);
   //show info in html
   $(".Name").text(name);
   $(".age").text("Age:" + age);
-  $(".phone").text("phone#:" + phone);
-  $(".email").text("Email:" + email);
+  $(".phone").text(phone);
+  $(".email").text(email);
   $(".Story").text(story);
   $(".profile-imgpop").attr("src", image);
 

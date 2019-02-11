@@ -80,6 +80,10 @@ body {
   -moz-box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.75);
 }
+.profile-imgpop {
+  height: 120px;
+  width: 120px;
+}
 body > div.container.my-container > div {
   padding: 10px;
 }
@@ -111,9 +115,16 @@ body > div.container.my-container > div {
 #ProfileBtn {
   margin-right: 350px;
 }
+
 #editBtn {
   background-color: transparent;
   border: none;
+}
+/* #popupBtn {
+  width: 600px;
+} */
+.usertd {
+  margin-right: 50px;
 }
 .popup {
   margin: 70px auto;
@@ -124,7 +135,8 @@ body > div.container.my-container > div {
   position: relative;
   transition: all 5s ease-in-out;
 }
-#MapBtn {
+#MapBtn,
+#MapBtnpopup {
   background-color: transparent;
   border: none;
   padding-top: 0px;
