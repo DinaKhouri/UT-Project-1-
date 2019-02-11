@@ -44,9 +44,10 @@ $(".show").on("click", function() {
 $(document).on("click", "#search-button", function(event) {
   console.log("search button clicked!");
   event.preventDefault();
-  $(".result").html("");
+  $(".result").html("<table class='table'><thead><tr><th scope='col'> Picture</th><th scope='col'> Username</th><th scope='col'> Needs</th><th scope='col'> Profile</th></tr></thead><tbody id='result-list'></tbody></table>");
   var userRef = firebase.database().ref("Users");
 
+  // <div class='container my-container result'>
   // getting the text value of the drop-down menu selected option.
   var optionText = $("#red-sort option:selected")
     .text()
@@ -79,6 +80,16 @@ $(document).on("click", "#search-button", function(event) {
       // append snapshot values to tbody
 
       $(".result").append(
+        "<tr class='resultsclick' id='" +
+          key +
+          "'><td><img class='profile-img resultsPic' src=" +
+        SRC +
+        "></td><td>" +
+        snapshot.val().username +
+        "</td><td>" +
+            "Needs " +
+        optionText +
+        "</td><td>" +
         "<button type='button' id='popupBtn' class=' btn btn-lg'  data-toggle='modal' data-target='#popupmodal'" +
           "name='" +
           snapshot.val().username +
@@ -97,19 +108,21 @@ $(document).on("click", "#search-button", function(event) {
           "' image='" +
           snapshot.val().image +
           "'>" +
-          // " <tr id='" +
-          // key +
-          // "' password='" +
-          // snapshot.val().password +
-          //"'>
-          "<td><img class='profile-img resultsPic' src=" +
-          SRC +
-          "></td><td>" +
-          snapshot.val().username +
-          "</td><td>" +
-          optionText +
-          "</td></button><br>"
+          "View Profile"
+          // "<td><img class='profile-img resultsPic' src=" +
+          // SRC +
+          +
+          "</td></button></tr><br>" 
+          // +
+          // "<td><img class='profile-img resultsPic' src=" +
+          // SRC +
+          // "></td><td>" +
+          // snapshot.val().username +
+          // "</td><td>" +
+          // optionText +
+          // "</td>"
       );
+      
     });
 });
 
