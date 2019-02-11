@@ -52,9 +52,10 @@ $(".show").on("click", function() {
   function failure() {}
 });
 
+// SEARCH BUTTON FUNCTION
 // event listener for search-button that queries the database for user profiles that have the value of "on" for the selected option (optionText).
 $(document).on("click", "#search-button", function(event) {
-  console.log("button clicked!");
+  console.log("search button clicked!");
   event.preventDefault();
   $("#result-list").html("");
   var userRef = firebase.database().ref("Users");
@@ -64,9 +65,9 @@ $(document).on("click", "#search-button", function(event) {
     .text()
     .toLowerCase()
     .trim();
-  console.log(
-    "(Outside child_added scope) Selected Option Text: " + optionText
-  );
+  // console.log(
+  //   "(Outside child_added scope) Selected Option Text: " + optionText
+  // )
 
   userRef
     .orderByChild(optionText)
@@ -108,17 +109,235 @@ $(document).on("click", "#search-button", function(event) {
       );
     });
 });
+
+
+// *********************************
+// *********************************
+// RESULTS TO FULL PROFILE FUNCTION
+// *********************************
 $(document).on("click", ".resultsclick", function(event) {
   console.log("clicked!");
-  var key = $(".resultsclick").attr("id");
-  var email = $(".resultsclick").attr("email");
-  var password = $(".resultsclick").attr("password");
-  console.log(key);
-  console.log(email);
-  console.log(password);
-  firebaseLogin(email, password);
-  window.location = "UserProfile.html";
+
+  // mouse over animation
+  $('body').mousemove(function(event){
+    $(".red").removeClass("red");
+    $(event.target).addClass("red");
 });
+// var userRef = firebase.database().ref("Users");
+//** let Bkey = $('#'+key).val();
+// let okey = $(this).attr('id');
+// database.ref("Users").child(Key).remove();
+// $('#'+key).val()
+  
+  // need for this to be specific to clicked division, not all divisions
+  var key = $(this).attr("id");
+  // var key = $(".resultsclick").val().key;
+  // var key = $(".resultsclick").text("id");
+  // var email = $(".resultsclick").attr("email");
+  // var password = $(".resultsclick").attr("password");
+
+  
+  // setTimeout(function(){ myWindow.close() }, 3000);  
+  console.log(key);
+  // console.log(okey);
+  // console.log(email);
+  // console.log(password);
+  // window.location = "UserProfile.html";
+
+  var userRef = firebase.database().ref("Users");
+  userRef.orderByChild(key).equalTo(key).on("child_added", function(snapshot) {
+    // var key = snapshot.key;
+    var data = snapshot.val();
+    var mail = snapshot.val().email;
+    var user = snapshot.val().username;
+    var age = snapshot.val().age;
+    var name = snapshot.val().name;
+    var phone = snapshot.val().phone;
+    var story = snapshot.val().story;
+    var image = snapshot.val().image;
+    var lat = snapshot.val().lat;
+    var long = snapshot.val().long;
+    
+    var myWindow = window.open("", "", "width=700, height=1000");
+    myWindow.document.write(key).html();
+
+      $("#testu").append(
+        "<tr class='fullProfile' id='" +
+          key +
+          "' email='" +
+          mail +
+          "' password='" +
+          lat +
+          "'><td> <img class=' profile-img resultsPic' src=" +
+          SRC +
+          "></td><td>" +
+          user +
+          "</td><td>" +
+          "Needs " +
+          age +
+          "</td>"
+      );
+
+
+  });
+
+})
+
+  // firebasePull(key);
+
+  // function firebasePull(key) {
+  //   // database.ref("Users").on("child_added", function(snapshot) {
+  
+  //       var userRef = firebase.database().ref("Users");
+  //       userRef.orderByChild(key).equalTo(key).on("child_added", function(snapshot) {
+        // var optionText = $("#red-sort option:selected").text();
+        // console.log("this user needs " + optionText + ":", snapshot.val().username);
+        
+
+        // NEED
+          // var mail = snapshot.val().email;
+          // var user = snapshot.val().username;
+          // var age = snapshot.val().age;
+          // var name = snapshot.val().name;
+          // var phone = snapshot.val().phone;
+          // var story = snapshot.val().story;
+          // var image = snapshot.val().image;
+          // var lat = snapshot.val().lat;
+          // var long = snapshot.val().long;
+
+  
+          //   var showUser = $("<p>");
+          //   showUser.attr("class", "navbar-text navbar-right");
+          //   showUser.text("Signed in as " + user);
+          //   $(".Name").text(name);
+          //   $(".age").text("Age:" + age);
+          //   $(".phone").text("phone#:" + phone);
+          //   $(".email").text("Email:" + email);
+          //   $(".Story").text(story);
+          //   $(".profile-img").attr("src", image);
+
+            // NEED
+  
+            // $("#MapBtn").on("click", function() {
+            //   var coords = new google.maps.LatLng(lat, long);
+  
+            //   var mapOptions = {
+            //     zoom: 11,
+            //     center: coords,
+            //     mapTypeId: google.maps.MapTypeId.ROADMAP
+            //   };
+  
+            //   map = new google.maps.Map(
+            //     document.getElementById("map"),
+            //     mapOptions
+            //   );
+            //   marker = new google.maps.Marker({ map: map, position: coords });
+            //   mapar.push(map);
+            //   markar.push(marker);
+            // });
+
+            // var myWindow = window.open("", "", "width=700, height=1000");
+            // myWindow.document.write(key).html();
+            // myWindow.document.write($(".resultsclick").html());
+  
+            // var logoutBtn = $("<button>");
+            // logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
+            // logoutBtn.attr("id", "logout");
+            // logoutBtn.text("Logout");
+  
+            // $("#userDisplay").append(logoutBtn, showUser);
+  
+            // console.log("You're logged in!");
+          // })
+  //       })
+  //     };
+  // }); 
+
+
+
+
+
+// NEW FUNCTION START
+// possibly use .once
+// function firebasePull(email, password) {
+//   database.ref("Users").on(
+//     "child_added",
+//     function(snapshot) {
+
+//       var userRef = firebase.database().ref("Users");
+//       userRef
+//     .orderByChild(key)
+//     .equalTo("on")
+//     .on("child_added", function(snapshot) {
+//       var optionText = $("#red-sort option:selected").text();
+//       console.log(
+//         "this user needs " + optionText + ":",
+//         snapshot.val().username
+//       );
+      
+//         var mail = snapshot.val().email;
+//         var user = snapshot.val().username;
+//         var age = snapshot.val().age;
+//         var name = snapshot.val().name;
+//         var phone = snapshot.val().phone;
+//         var story = snapshot.val().story;
+//         var image = snapshot.val().image;
+//         var lat = snapshot.val().lat;
+//         var long = snapshot.val().long;
+
+//         if (mail == email) {
+//           $("#userDisplay").empty();
+
+//           var showUser = $("<p>");
+//           showUser.attr("class", "navbar-text navbar-right");
+//           showUser.text("Signed in as " + user);
+//           $(".Name").text(name);
+//           $(".age").text("Age:" + age);
+//           $(".phone").text("phone#:" + phone);
+//           $(".email").text("Email:" + email);
+//           $(".Story").text(story);
+//           $(".profile-img").attr("src", image);
+
+//           $("#MapBtn").on("click", function() {
+//             var coords = new google.maps.LatLng(lat, long);
+
+//             var mapOptions = {
+//               zoom: 11,
+//               center: coords,
+//               mapTypeId: google.maps.MapTypeId.ROADMAP
+//             };
+
+//             map = new google.maps.Map(
+//               document.getElementById("map"),
+//               mapOptions
+//             );
+//             marker = new google.maps.Marker({ map: map, position: coords });
+//             mapar.push(map);
+//             markar.push(marker);
+//           });
+
+//           var logoutBtn = $("<button>");
+//           logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
+//           logoutBtn.attr("id", "logout");
+//           logoutBtn.text("Logout");
+
+//           $("#userDisplay").append(logoutBtn, showUser);
+
+//           console.log("You're logged in!");
+//         }
+//       }
+//     },
+//     function(errorObject) {
+//       console.log("The read failed: " + errorObject.code);
+//     }
+//   );
+// }
+
+// 
+// NEW FUNCTION END
+// 
+
+
 // event.preventDefault();
 // console.log("working");
 // event.userRef
@@ -213,6 +432,8 @@ $(document.body).on("click", "#create", function() {
   $("#modalwindow").modal("hide");
 });
 
+
+// SIGN IN FUNCTION
 $(document.body).on("click", "#signin", function() {
   var email = $("#emailLogin")
     .val()
@@ -231,6 +452,9 @@ $(document.body).on("click", "#signin", function() {
   }
 });
 
+
+
+// LOGOUT FUNCTION
 $(document.body).on("click", "#logout", function() {
   if (logout(email, password) == false) {
     console.log("Logout failed");
@@ -350,6 +574,10 @@ function firebaseCreate(
   console.log("You created an account!");
 }
 
+
+
+
+// FIREBASE LOGIN FUNCTION
 function firebaseLogin(email, password) {
   database.ref("Users").on(
     "child_added",

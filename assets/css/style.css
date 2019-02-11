@@ -167,3 +167,7 @@ input.checkbox-input {
 #findLocationButton:hover {
   background-color: lightblue;
 }
+
+.red {
+  background-color: red;
+}
