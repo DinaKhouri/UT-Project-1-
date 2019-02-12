@@ -44,7 +44,9 @@ $(".show").on("click", function() {
 $(document).on("click", "#search-button", function(event) {
   console.log("search button clicked!");
   event.preventDefault();
-  $(".result").html("<table class='table'><thead><tr><th scope='col'> Picture</th><th scope='col'> Username</th><th scope='col'> Needs</th><th scope='col'> Profile</th></tr></thead><tbody id='result-list'></tbody></table>");
+  $(".result").html(
+    "<table class='table'><thead><tr><th scope='col'> Picture</th><th scope='col'> Username</th><th scope='col'> Needs</th><th scope='col'> Profile</th></tr></thead><tbody id='result-list'></tbody></table>"
+  );
   var userRef = firebase.database().ref("Users");
 
   // <div class='container my-container result'>
@@ -83,14 +85,14 @@ $(document).on("click", "#search-button", function(event) {
         "<tr class='resultsclick' id='" +
           key +
           "'><td><img class='profile-img resultsPic' src=" +
-        SRC +
-        "></td><td>" +
-        snapshot.val().username +
-        "</td><td>" +
-            "Needs " +
-        optionText +
-        "</td><td>" +
-        "<button type='button' id='popupBtn' class=' btn btn-lg'  data-toggle='modal' data-target='#popupmodal'" +
+          SRC +
+          "></td><td class='nametd '>" +
+          snapshot.val().username +
+          "</td><td class='needstd'>" +
+          "Needs " +
+          optionText +
+          "</td><td>" +
+          "<button type='button' id='popupBtn' class=' btn btn-lg btn-primary'  data-toggle='modal' data-target='#popupmodal'" +
           "name='" +
           snapshot.val().username +
           "' age='" +
@@ -107,22 +109,8 @@ $(document).on("click", "#search-button", function(event) {
           snapshot.val().email +
           "' image='" +
           snapshot.val().image +
-          "'>" +
-          "View Profile"
-          // "<td><img class='profile-img resultsPic' src=" +
-          // SRC +
-          +
-          "</td></button></tr><br>" 
-          // +
-          // "<td><img class='profile-img resultsPic' src=" +
-          // SRC +
-          // "></td><td>" +
-          // snapshot.val().username +
-          // "</td><td>" +
-          // optionText +
-          // "</td>"
+          "'>View Profile</td></button></tr><br>"
       );
-      
     });
 });
 

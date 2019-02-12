@@ -187,18 +187,25 @@ input.checkbox-input {
 .result {
   overflow-y: scroll;
 }
-.usertd,
+
+.nametd {
+  padding-right: 60px;
+  font-family: "Concert One", cursive;
+  font-size: 1.2em;
+  font-weight: bold;
+}
 .needstd {
-  margin-right: 100px;
+  padding-right: 50px;
+  font-family: "Concert One", cursive;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 .resultsPic {
   height: 100px;
   width: 100px;
-  margin-right: 100px;
+  margin-right: 50px;
 }
-/* .resultsclick {
-  margin-right: 100px;
-} */
+
 #findLocationButton {
   background-color: beige;
 }
