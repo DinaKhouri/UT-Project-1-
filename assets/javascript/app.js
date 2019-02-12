@@ -350,7 +350,8 @@ function firebaseCreate(
   logoutBtn.text("Logout");
 
   $("#userDisplay").append(logoutBtn, showUser);
-
+  $("#createBtn").hide();
+  $("#loginBtn").hide();
   console.log("You created an account!");
 }
 
@@ -410,7 +411,8 @@ function firebaseLogin(email, password) {
           logoutBtn.text("Logout");
 
           $("#userDisplay").append(logoutBtn, showUser);
-
+          $("#createBtn").hide();
+          $("#loginBtn").hide();
           console.log("You're logged in!");
         }
       }
