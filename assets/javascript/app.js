@@ -13,13 +13,9 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-var recentList = [];
-
-var emailList = {};
-
 var username = "Guest";
-//google coordinates
 
+//google coordinates
 var myLatd;
 var myLongd;
 //Google maps function
@@ -40,7 +36,7 @@ $(".show").on("click", function() {
 });
 
 // SEARCH BUTTON FUNCTION
-// event listener for search-button that queries the database for user profiles that have the value of "on" for the selected option (optionText)
+// Event listener for search-button that queries the database for user profiles that have the value of "on" for the selected option (optionText)
 $(document).on("click", "#search-button", function(event) {
   console.log("search button clicked!");
   event.preventDefault();
@@ -49,8 +45,7 @@ $(document).on("click", "#search-button", function(event) {
   );
   var userRef = firebase.database().ref("Users");
 
-  // <div class='container my-container result'>
-  // getting the text value of the drop-down menu selected option.
+  // Getting the text value of the drop-down menu selected option.
   var optionText = $("#red-sort option:selected")
     .text()
     .toLowerCase()
@@ -151,8 +146,7 @@ $(document).on("click", "#popupBtn", function(event) {
   });
 });
 
-// user login code starts here
-
+// CREATE ACCOUNT ACTION
 $(document.body).on("click", "#create", function() {
   var email = $("#email")
     .val()
@@ -217,7 +211,7 @@ $(document.body).on("click", "#create", function() {
   $("#modalwindow").modal("hide");
 });
 
-// SIGN IN FUNCTION
+// SIGN IN ACTION
 $(document.body).on("click", "#signin", function() {
   var email = $("#emailLogin")
     .val()
@@ -258,6 +252,8 @@ $(document.body).on("click", "#logout", function() {
   }
 });
 
+
+// FIREBASE ACCOUNT CREATE FUNCTION
 function firebaseCreate(
   email,
   password,
@@ -311,7 +307,7 @@ function firebaseCreate(
 
   //show profile data
 
-  $(".Name").text(name);
+  $(".Name").text(username);
   $(".age").text("Age:" + age);
   $(".phone").text("phone#:" + phone);
   $(".email").text("Email:" + email);
@@ -343,7 +339,6 @@ function firebaseCreate(
 
     function failure() {}
   });
-
   var logoutBtn = $("<button>");
   logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
   logoutBtn.attr("id", "logout");
@@ -354,6 +349,140 @@ function firebaseCreate(
   $("#loginBtn").hide();
   console.log("You created an account!");
 }
+
+  // PROFILE EDIT ACTION / FUNCTION
+  // 1. Connect with Edit Account Modal.
+  // 2. Save the input in each field to variables.
+  // 3. Push those variables to the database as an .update function.
+  // 4. Append the new changes to the UserProfile.html and close the window.
+  // Submitchanges = id of edit account submit button.
+
+  $(document.body).on("click", "#Submitchanges", function() {
+    
+    console.log("Edit Account Submit Clicked!")
+
+    var email = $("#email")
+      .val()
+      .trim();
+    var password = $("#password")
+      .val()
+      .trim();
+    var username = $("#username")
+      .val()
+      .trim();
+    var age = $("#age-input")
+      .val()
+      .trim();
+    var phone = $("#phone-input")
+      .val()
+      .trim();
+    var story = $("#story-input")
+      .val()
+      .trim();
+    var image = $("#image-input")
+      .val()
+      .trim();
+  
+    var shoes = $("input:checkbox[name=shoes]:checked").val() || null;
+    var tissues = $("input:checkbox[name=tissues]:checked").val() || null;
+    var towels = $("input:checkbox[name=towels]:checked").val() || null;
+    var blanket = $("input:checkbox[name=blanket]:checked").val() || null;
+    var shirt = $("input:checkbox[name=shirt]:checked").val() || null;
+    var toiletries = $("input:checkbox[name=toiletries]:checked").val() || null;
+    var socks = $("input:checkbox[name=socks]:checked").val() || null;
+    var pots = $("input:checkbox[name=pots]:checked").val() || null;
+    var bed = $("input:checkbox[name=bed]:checked").val() || null;
+    var toaster = $("input:checkbox[name=toaster]:checked").val() || null;
+
+    var user = {
+      email: email,
+      password: password,
+      username: username,
+      age: age,
+      phone: phone,
+      story: story,
+      image: image,
+      lat: myLatd,
+      long: myLongd,
+      shoes: shoes,
+      tissues: tissues,
+      towels: towels,
+      blanket: blanket,
+      shirt: shirt,
+      toiletries: toiletries,
+      socks: socks,
+      pots: pots,
+      bed: bed,
+      toaster: toaster
+    };
+    // database.ref("Users").update(user)
+
+    database.ref("Users").update({
+      email: email,
+      password: password,
+      username: username,
+      age: age,
+      phone: phone,
+      story: story,
+      image: image,
+      lat: myLatd,
+      long: myLongd,
+      shoes: shoes,
+      tissues: tissues,
+      towels: towels,
+      blanket: blanket,
+      shirt: shirt,
+      toiletries: toiletries,
+      socks: socks,
+      pots: pots,
+      bed: bed,
+      toaster: toaster
+    });
+console.log(username);
+console.log(phone);
+    // updating navbar login info
+    $("#userDisplay").empty();
+    var showUser = $("<p>");
+    showUser.attr("class", "navbar-text navbar-right");
+    showUser.text("Signed in as " + username);
+
+    $(".Name").text(username);
+    $(".age").text("Age:" + age);
+    $(".phone").text("phone#:" + phone);
+    $(".email").text("Email:" + email);
+    $(".Story").text(story);
+    $(".profile-img").attr("src", image);
+
+
+    // if (create(email, password) == false) {
+    //   console.log("Login failed");
+  
+    //   return;
+    // } else {
+      // firebaseUpdate(
+      //   email,
+      //   password,
+      //   username,
+      //   age,
+      //   phone,
+      //   story,
+      //   image,
+      //   myLatd,
+      //   myLongd,
+      //   shoes,
+      //   tissues,
+      //   towels,
+      //   blanket,
+      //   shirt,
+      //   toiletries,
+      //   socks,
+      //   pots,
+      //   bed,
+      //   toaster
+      // );
+  
+  });
+
 
 // FIREBASE LOGIN FUNCTION
 function firebaseLogin(email, password) {
