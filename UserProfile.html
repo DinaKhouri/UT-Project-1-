@@ -353,9 +353,17 @@
      <button type="button" id="aboutBtn" class="navbar-left btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal6">
         About
       </button>
-      <a href="index.html"><button id="" class="navbar-left btn btn-primary btn-lg" >
+      <!-- End about buttons -->
+      <!-- Start Meetup Button -->
+      <button type="button" id="meetupsBtn" class="navbar-left btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal9">
+          MeetsUps
+        </button>
+      
+      <!-- end meetup modal -->
+            <a href="index.html"><button id="" class="navbar-left btn btn-primary btn-lg" >
           Search
         </button></a>
+        
       <!-- Modal About -->
       <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -431,22 +439,8 @@
         </div>
         <div class="col-sm-7">
           <h5 class="Story">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            laboriosam voluptates pariatur nihil, assumenda aliquam nobis
-            doloremque accusamus vitae praesentium commodi atque ea, porro
-            beatae expedita quasi, rem ut odit. Lorem, ipsum dolor sit amet
-            consectetur adipisicing elit. Aspernatur laboriosam voluptates
-            pariatur nihil, assumenda aliquam nobis doloremque accusamus vitae
-            praesentium commodi atque ea, porro beatae expedita quasi, rem ut
-            odit.<br />
-            <br />Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Aspernatur laboriosam voluptates pariatur nihil, assumenda aliquam
-            nobis doloremque accusamus vitae praesentium commodi atque ea, porro
-            beatae expedita quasi, rem ut odit. Lorem, ipsum dolor sit amet
-            consectetur adipisicing elit. Aspernatur laboriosam voluptates
-            pariatur nihil, assumenda aliquam nobis doloremque accusamus vitae
-            praesentium commodi atque ea, porro beatae expedita quasi, rem ut
-            odit.
+            Click edit and create your story. <br /> Be honest and sincere.  Others want to know about you!  What struggles have you endured that lead you here? <br /><br />   Tell us anything that you want to share to help us understand how to help you. The more we understand your struggles, the more help you will receive. 
+            
           </h5>
         </div>
         <div class="col-sm-1 ">
@@ -467,6 +461,47 @@
        
  
  <!-- end of popup modal -->
+ <!-- end meetup buttons -->
+ <div
+ class="modal fade"
+ id="myModal9"
+ tabindex="-1"
+ role="dialog"
+ aria-labelledby="myModalLabel"
+ >
+ <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Find Me</h4>
+      </div>
+      <div class="modal-body modalbodymeetup">
+      <div class = "container my-container my-containermeetup">
+        <div class ="titlem"><h4>MeetUps</h4></div>
+            <div class="results"></div>
+          </div>
+          
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-default"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+        
+      </div>
+     </div>  
+ </div>
+<!-- actual meetup modal -->
         <!-- Edit modal -->
         <div
           class="modal fade"
@@ -742,5 +777,6 @@
           <!-- modal end -->
   </body>
   <script src="assets/javascript/app.js"></script>
+  <script src="assets/javascript/MeetUp.js"></script>
   <!-- <script src="assets/javascript/dinaTest.js"></script> -->
 </html>
