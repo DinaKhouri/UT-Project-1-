@@ -357,29 +357,32 @@ function firebaseCreate(
   // 4. Append the new changes to the UserProfile.html and close the window.
   // Submitchanges = id of edit account submit button.
 
-  $(document.body).on("click", "#Submitchanges", function() {
-    
+  $(document.body).on("click", "#Submitchanges", function(event) {
     console.log("Edit Account Submit Clicked!")
+    event.preventDefault();
+    var userRef = firebase.database().ref("Users");
 
-    var email = $("#email")
+    var key = event.key;
+
+    var email = $("#emailE")
       .val()
       .trim();
-    var password = $("#password")
+    var password = $("#passwordE")
       .val()
       .trim();
-    var username = $("#username")
+    var username = $("#usernameE")
       .val()
       .trim();
-    var age = $("#age-input")
+    var age = $("#age-inputE")
       .val()
       .trim();
-    var phone = $("#phone-input")
+    var phone = $("#phone-inputE")
       .val()
       .trim();
-    var story = $("#story-input")
+    var story = $("#story-inputE")
       .val()
       .trim();
-    var image = $("#image-input")
+    var image = $("#image-inputE")
       .val()
       .trim();
   
@@ -394,30 +397,10 @@ function firebaseCreate(
     var bed = $("input:checkbox[name=bed]:checked").val() || null;
     var toaster = $("input:checkbox[name=toaster]:checked").val() || null;
 
-    var user = {
-      email: email,
-      password: password,
-      username: username,
-      age: age,
-      phone: phone,
-      story: story,
-      image: image,
-      lat: myLatd,
-      long: myLongd,
-      shoes: shoes,
-      tissues: tissues,
-      towels: towels,
-      blanket: blanket,
-      shirt: shirt,
-      toiletries: toiletries,
-      socks: socks,
-      pots: pots,
-      bed: bed,
-      toaster: toaster
-    };
     // database.ref("Users").update(user)
-
-    database.ref("Users").update({
+   
+// .updateChildrenAsync
+    userRef.child(event.key).update({
       email: email,
       password: password,
       username: username,
@@ -438,7 +421,9 @@ function firebaseCreate(
       bed: bed,
       toaster: toaster
     });
+  
 console.log(username);
+console.log(key);
 console.log(phone);
     // updating navbar login info
     $("#userDisplay").empty();
@@ -446,6 +431,7 @@ console.log(phone);
     showUser.attr("class", "navbar-text navbar-right");
     showUser.text("Signed in as " + username);
 
+    // updating data on html
     $(".Name").text(username);
     $(".age").text("Age:" + age);
     $(".phone").text("phone#:" + phone);
@@ -453,34 +439,6 @@ console.log(phone);
     $(".Story").text(story);
     $(".profile-img").attr("src", image);
 
-
-    // if (create(email, password) == false) {
-    //   console.log("Login failed");
-  
-    //   return;
-    // } else {
-      // firebaseUpdate(
-      //   email,
-      //   password,
-      //   username,
-      //   age,
-      //   phone,
-      //   story,
-      //   image,
-      //   myLatd,
-      //   myLongd,
-      //   shoes,
-      //   tissues,
-      //   towels,
-      //   blanket,
-      //   shirt,
-      //   toiletries,
-      //   socks,
-      //   pots,
-      //   bed,
-      //   toaster
-      // );
-  
   });
 
 
