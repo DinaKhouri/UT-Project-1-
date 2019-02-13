@@ -115,13 +115,14 @@ body > div.container.my-container > div {
 }
 .find-me-text {
   padding-left: 50px;
-  font-family: "Concert One", cursive;
+  font-family: "Acme", sans-serif;
   color: black;
 }
 .age,
 .phone,
 .email {
-  font-family: "Concert One", cursive;
+  font-family: "Acme", sans-serif;
+  font-size: 1.2em;
 }
 .row {
   padding-top: 5%;
@@ -141,9 +142,7 @@ body > div.container.my-container > div {
   background-color: transparent;
   border: none;
 }
-/* #popupBtn {
-  width: 600px;
-} */
+
 .usertd {
   margin-right: 50px;
 }
@@ -163,7 +162,7 @@ body > div.container.my-container > div {
   padding-top: 0px;
 }
 .Name {
-  font-family: "Concert One", cursive;
+  font-family: "Acme", sans-serif;
 }
 .checkbox-input-text {
   padding-left: 20px;
@@ -189,7 +188,7 @@ input.checkbox-input {
 }
 
 .Story {
-  font-family: "Indie Flower", cursive;
+  font-family: "Yanone Kaffeesatz", sans-serif;
   padding-top: 80px;
 }
 
@@ -210,14 +209,14 @@ input.checkbox-input {
 }
 
 .nametd {
-  padding-right: 60px;
-  font-family: "Concert One", cursive;
+  padding-right: 40px;
+  font-family: "Acme", sans-serif;
   font-size: 1.2em;
   font-weight: bold;
 }
 .needstd {
-  padding-right: 50px;
-  font-family: "Concert One", cursive;
+  padding-right: 40px;
+  font-family: "Acme", sans-serif;
   font-size: 1.2em;
   font-weight: bold;
 }
