@@ -356,13 +356,15 @@ function firebaseCreate(
   // 3. Push those variables to the database as an .update function.
   // 4. Append the new changes to the UserProfile.html and close the window.
   // Submitchanges = id of edit account submit button.
+  // UPDATE: must set the ID of something arbitrary to the user.key on SIGN in.  
+  // This way, you can reference the id in the Submitchanges button.
 
-  $(document.body).on("click", "#Submitchanges", function(event) {
+  $(document.body).on("click", "#Submitchanges", function() {
     console.log("Edit Account Submit Clicked!")
-    event.preventDefault();
+    // event.preventDefault();
     var userRef = firebase.database().ref("Users");
 
-    var key = event.key;
+    var key = $(".profile-img").attr("id");
 
     var email = $("#emailE")
       .val()
@@ -400,7 +402,7 @@ function firebaseCreate(
     // database.ref("Users").update(user)
    
 // .updateChildrenAsync
-    userRef.child(event.key).update({
+    userRef.child(key).update({
       email: email,
       password: password,
       username: username,
@@ -460,6 +462,7 @@ function firebaseLogin(email, password) {
         var image = snapshot.val().image;
         var lat = snapshot.val().lat;
         var long = snapshot.val().long;
+        var key = snapshot.val().key;
 
         if (mail == email) {
           $("#userDisplay").empty();
@@ -472,7 +475,10 @@ function firebaseLogin(email, password) {
           $(".phone").text("phone#:" + phone);
           $(".email").text("Email:" + email);
           $(".Story").text(story);
-          $(".profile-img").attr("src", image);
+          $(".profile-img").attr({
+            "src": image,
+            "id": key
+          });
 
           $("#MapBtn").on("click", function() {
             var coords = new google.maps.LatLng(lat, long);
