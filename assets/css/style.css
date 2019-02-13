@@ -8,7 +8,9 @@
 .modal-dialogp {
   width: 900px;
 }
-
+/* .results {
+  overflow: scroll;
+} */
 .btn {
   margin-right: 5px;
 }
@@ -55,6 +57,7 @@
 }
 .my-containermeetup {
   width: 500px;
+  overflow-y: scroll;
 }
 .my-containerpopup {
   padding: 3%;
