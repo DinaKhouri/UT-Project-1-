@@ -357,14 +357,15 @@ function firebaseCreate(
   // 4. Append the new changes to the UserProfile.html and close the window.
   // Submitchanges = id of edit account submit button.
   // UPDATE: must set the ID of something arbitrary to the user.key on SIGN in.  
-  // This way, you can reference the id in the Submitchanges button.
+  // This way, you can reference the id in the Submitchanges event as a way to select that user in the database.
 
   $(document.body).on("click", "#Submitchanges", function() {
     console.log("Edit Account Submit Clicked!")
     // event.preventDefault();
     var userRef = firebase.database().ref("Users");
 
-    var key = $(".profile-img").attr("id");
+    var keyE = $(".profile-img").attr("id");
+    console.log(keyE);
 
     var email = $("#emailE")
       .val()
@@ -402,7 +403,7 @@ function firebaseCreate(
     // database.ref("Users").update(user)
    
 // .updateChildrenAsync
-    userRef.child(key).update({
+    userRef.child(keyE).update({
       email: email,
       password: password,
       username: username,
@@ -424,9 +425,8 @@ function firebaseCreate(
       toaster: toaster
     });
   
-console.log(username);
-console.log(key);
-console.log(phone);
+// console.log(username);
+// console.log(phone);
     // updating navbar login info
     $("#userDisplay").empty();
     var showUser = $("<p>");
@@ -439,7 +439,9 @@ console.log(phone);
     $(".phone").text("phone#:" + phone);
     $(".email").text("Email:" + email);
     $(".Story").text(story);
-    $(".profile-img").attr("src", image);
+    $(".profile-img").attr({
+      "src": image,
+    });
 
   });
 
@@ -462,7 +464,10 @@ function firebaseLogin(email, password) {
         var image = snapshot.val().image;
         var lat = snapshot.val().lat;
         var long = snapshot.val().long;
-        var key = snapshot.val().key;
+        var key = snapshot.key;
+        console.log(age, username);
+        // console.log(snapshot.val().key);
+        // console.log(snapshot.key);
 
         if (mail == email) {
           $("#userDisplay").empty();
