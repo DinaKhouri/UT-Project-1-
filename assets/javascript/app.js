@@ -456,7 +456,7 @@ function firebaseLogin(email, password) {
         snapshot.child("username").exists()
       ) {
         var mail = snapshot.val().email;
-        var user = snapshot.val().username;
+        var username = snapshot.val().username;
         var age = snapshot.val().age;
         var name = snapshot.val().name;
         var phone = snapshot.val().phone;
@@ -474,8 +474,8 @@ function firebaseLogin(email, password) {
 
           var showUser = $("<p>");
           showUser.attr("class", "navbar-text navbar-right");
-          showUser.text("Signed in as " + user);
-          $(".Name").text(name);
+          showUser.text("Signed in as " + username);
+          $(".Name").text(username);
           $(".age").text("Age:" + age);
           $(".phone").text("phone#:" + phone);
           $(".email").text("Email:" + email);
