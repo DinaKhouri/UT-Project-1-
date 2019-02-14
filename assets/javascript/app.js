@@ -340,7 +340,7 @@ function firebaseCreate(
     function failure() {}
   });
   var logoutBtn = $("<button>");
-  logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
+  logoutBtn.attr("class", "btn btn-primary btn-lg nav-item navbar-right");
   logoutBtn.attr("id", "logout");
   logoutBtn.text("Logout");
 
@@ -504,7 +504,7 @@ function firebaseLogin(email, password) {
           });
 
           var logoutBtn = $("<button>");
-          logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
+          logoutBtn.attr("class", "btn btn-primary btn-lg nav-item navbar-right");
           logoutBtn.attr("id", "logout");
           logoutBtn.text("Logout");
 
