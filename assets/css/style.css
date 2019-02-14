@@ -38,6 +38,9 @@
   font-family: "Bangers", cursive;
   text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.7);
 } */
+#edit-text {
+  color: black;
+}
 
 .logo {
   height: 50px;
