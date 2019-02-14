@@ -237,7 +237,7 @@ $(document.body).on("click", "#logout", function() {
 
     return;
   } else {
-    window.location.replace("index.html");
+    window.location.replace("UserProfile.html");
     $("#userDisplay").empty();
 
     username = "Guest";
