@@ -145,7 +145,7 @@ $(document).on("click", "#popupBtn", function(event) {
     markar.push(marker);
   });
 });
-
+// $("#logout").hide();
 // CREATE ACCOUNT ACTION
 $(document.body).on("click", "#create", function() {
   var email = $("#email")
@@ -252,7 +252,6 @@ $(document.body).on("click", "#logout", function() {
   }
 });
 
-
 // FIREBASE ACCOUNT CREATE FUNCTION
 function firebaseCreate(
   email,
@@ -340,111 +339,110 @@ function firebaseCreate(
     function failure() {}
   });
   var logoutBtn = $("<button>");
-  logoutBtn.attr("class", "btn btn-primary btn-lg nav-item navbar-right");
+  logoutBtn.attr("class", "navbar-right nav-link navbar-text");
   logoutBtn.attr("id", "logout");
   logoutBtn.text("Logout");
 
   $("#userDisplay").append(logoutBtn, showUser);
   $("#createBtn").hide();
   $("#loginBtn").hide();
+  // $("#logout").show();
   console.log("You created an account!");
 }
 
-  // PROFILE EDIT ACTION / FUNCTION
-  // 1. Connect with Edit Account Modal.
-  // 2. Save the input in each field to variables.
-  // 3. Push those variables to the database as an .update function.
-  // 4. Append the new changes to the UserProfile.html and close the window.
-  // Submitchanges = id of edit account submit button.
-  // UPDATE: must set the ID of something arbitrary to the user.key on SIGN in.  
-  // This way, you can reference the id in the Submitchanges event as a way to select that user in the database.
+// PROFILE EDIT ACTION / FUNCTION
+// 1. Connect with Edit Account Modal.
+// 2. Save the input in each field to variables.
+// 3. Push those variables to the database as an .update function.
+// 4. Append the new changes to the UserProfile.html and close the window.
+// Submitchanges = id of edit account submit button.
+// UPDATE: must set the ID of something arbitrary to the user.key on SIGN in.
+// This way, you can reference the id in the Submitchanges event as a way to select that user in the database.
 
-  $(document.body).on("click", "#Submitchanges", function() {
-    console.log("Edit Account Submit Clicked!")
-    // event.preventDefault();
-    var userRef = firebase.database().ref("Users");
+$(document.body).on("click", "#Submitchanges", function() {
+  console.log("Edit Account Submit Clicked!");
+  // event.preventDefault();
+  var userRef = firebase.database().ref("Users");
 
-    var keyE = $(".profile-img").attr("id");
-    console.log(keyE);
+  var keyE = $(".profile-img").attr("id");
+  console.log(keyE);
 
-    var email = $("#emailE")
-      .val()
-      .trim();
-    var password = $("#passwordE")
-      .val()
-      .trim();
-    var username = $("#usernameE")
-      .val()
-      .trim();
-    var age = $("#age-inputE")
-      .val()
-      .trim();
-    var phone = $("#phone-inputE")
-      .val()
-      .trim();
-    var story = $("#story-inputE")
-      .val()
-      .trim();
-    var image = $("#image-inputE")
-      .val()
-      .trim();
-  
-    var shoes = $("input:checkbox[name=shoes]:checked").val() || null;
-    var tissues = $("input:checkbox[name=tissues]:checked").val() || null;
-    var towels = $("input:checkbox[name=towels]:checked").val() || null;
-    var blanket = $("input:checkbox[name=blanket]:checked").val() || null;
-    var shirt = $("input:checkbox[name=shirt]:checked").val() || null;
-    var toiletries = $("input:checkbox[name=toiletries]:checked").val() || null;
-    var socks = $("input:checkbox[name=socks]:checked").val() || null;
-    var pots = $("input:checkbox[name=pots]:checked").val() || null;
-    var bed = $("input:checkbox[name=bed]:checked").val() || null;
-    var toaster = $("input:checkbox[name=toaster]:checked").val() || null;
+  var email = $("#emailE")
+    .val()
+    .trim();
+  var password = $("#passwordE")
+    .val()
+    .trim();
+  var username = $("#usernameE")
+    .val()
+    .trim();
+  var age = $("#age-inputE")
+    .val()
+    .trim();
+  var phone = $("#phone-inputE")
+    .val()
+    .trim();
+  var story = $("#story-inputE")
+    .val()
+    .trim();
+  var image = $("#image-inputE")
+    .val()
+    .trim();
 
-    // database.ref("Users").update(user)
-   
-// .updateChildrenAsync
-    userRef.child(keyE).update({
-      email: email,
-      password: password,
-      username: username,
-      age: age,
-      phone: phone,
-      story: story,
-      image: image,
-      lat: myLatd,
-      long: myLongd,
-      shoes: shoes,
-      tissues: tissues,
-      towels: towels,
-      blanket: blanket,
-      shirt: shirt,
-      toiletries: toiletries,
-      socks: socks,
-      pots: pots,
-      bed: bed,
-      toaster: toaster
-    });
-  
-// console.log(username);
-// console.log(phone);
-    // updating navbar login info
-    $("#userDisplay").empty();
-    var showUser = $("<p>");
-    showUser.attr("class", "navbar-text navbar-right");
-    showUser.text("Signed in as " + username);
+  var shoes = $("input:checkbox[name=shoes]:checked").val() || null;
+  var tissues = $("input:checkbox[name=tissues]:checked").val() || null;
+  var towels = $("input:checkbox[name=towels]:checked").val() || null;
+  var blanket = $("input:checkbox[name=blanket]:checked").val() || null;
+  var shirt = $("input:checkbox[name=shirt]:checked").val() || null;
+  var toiletries = $("input:checkbox[name=toiletries]:checked").val() || null;
+  var socks = $("input:checkbox[name=socks]:checked").val() || null;
+  var pots = $("input:checkbox[name=pots]:checked").val() || null;
+  var bed = $("input:checkbox[name=bed]:checked").val() || null;
+  var toaster = $("input:checkbox[name=toaster]:checked").val() || null;
 
-    // updating data on html
-    $(".Name").text(username);
-    $(".age").text("Age:" + age);
-    $(".phone").text("phone#:" + phone);
-    $(".email").text("Email:" + email);
-    $(".Story").text(story);
-    $(".profile-img").attr({
-      "src": image,
-    });
+  // database.ref("Users").update(user)
 
+  // .updateChildrenAsync
+  userRef.child(keyE).update({
+    email: email,
+    password: password,
+    username: username,
+    age: age,
+    phone: phone,
+    story: story,
+    image: image,
+    lat: myLatd,
+    long: myLongd,
+    shoes: shoes,
+    tissues: tissues,
+    towels: towels,
+    blanket: blanket,
+    shirt: shirt,
+    toiletries: toiletries,
+    socks: socks,
+    pots: pots,
+    bed: bed,
+    toaster: toaster
   });
 
+  // console.log(username);
+  // console.log(phone);
+  // updating navbar login info
+  $("#userDisplay").empty();
+  var showUser = $("<p>");
+  showUser.attr("class", "navbar-text navbar-right");
+  showUser.text("Signed in as " + username);
+
+  // updating data on html
+  $(".Name").text(username);
+  $(".age").text("Age:" + age);
+  $(".phone").text("phone#:" + phone);
+  $(".email").text("Email:" + email);
+  $(".Story").text(story);
+  $(".profile-img").attr({
+    src: image
+  });
+});
 
 // FIREBASE LOGIN FUNCTION
 function firebaseLogin(email, password) {
@@ -481,8 +479,8 @@ function firebaseLogin(email, password) {
           $(".email").text("Email:" + email);
           $(".Story").text(story);
           $(".profile-img").attr({
-            "src": image,
-            "id": key
+            src: image,
+            id: key
           });
 
           $("#MapBtn").on("click", function() {
@@ -504,7 +502,7 @@ function firebaseLogin(email, password) {
           });
 
           var logoutBtn = $("<button>");
-          logoutBtn.attr("class", "btn btn-primary btn-lg nav-item navbar-right");
+          logoutBtn.attr("class", "navbar-right nav-link navbar-text");
           logoutBtn.attr("id", "logout");
           logoutBtn.text("Logout");
 
