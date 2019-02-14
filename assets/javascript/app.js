@@ -340,7 +340,7 @@ function firebaseCreate(
     function failure() {}
   });
   var logoutBtn = $("<button>");
-  logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
+  logoutBtn.attr("class", "btn btn-primary btn-lg nav-item navbar-right");
   logoutBtn.attr("id", "logout");
   logoutBtn.text("Logout");
 
@@ -356,13 +356,16 @@ function firebaseCreate(
   // 3. Push those variables to the database as an .update function.
   // 4. Append the new changes to the UserProfile.html and close the window.
   // Submitchanges = id of edit account submit button.
+  // UPDATE: must set the ID of something arbitrary to the user.key on SIGN in.  
+  // This way, you can reference the id in the Submitchanges event as a way to select that user in the database.
 
-  $(document.body).on("click", "#Submitchanges", function(event) {
+  $(document.body).on("click", "#Submitchanges", function() {
     console.log("Edit Account Submit Clicked!")
-    event.preventDefault();
+    // event.preventDefault();
     var userRef = firebase.database().ref("Users");
 
-    var key = event.key;
+    var keyE = $(".profile-img").attr("id");
+    console.log(keyE);
 
     var email = $("#emailE")
       .val()
@@ -400,7 +403,7 @@ function firebaseCreate(
     // database.ref("Users").update(user)
    
 // .updateChildrenAsync
-    userRef.child(event.key).update({
+    userRef.child(keyE).update({
       email: email,
       password: password,
       username: username,
@@ -422,9 +425,8 @@ function firebaseCreate(
       toaster: toaster
     });
   
-console.log(username);
-console.log(key);
-console.log(phone);
+// console.log(username);
+// console.log(phone);
     // updating navbar login info
     $("#userDisplay").empty();
     var showUser = $("<p>");
@@ -437,7 +439,9 @@ console.log(phone);
     $(".phone").text("phone#:" + phone);
     $(".email").text("Email:" + email);
     $(".Story").text(story);
-    $(".profile-img").attr("src", image);
+    $(".profile-img").attr({
+      "src": image,
+    });
 
   });
 
@@ -452,7 +456,7 @@ function firebaseLogin(email, password) {
         snapshot.child("username").exists()
       ) {
         var mail = snapshot.val().email;
-        var user = snapshot.val().username;
+        var username = snapshot.val().username;
         var age = snapshot.val().age;
         var name = snapshot.val().name;
         var phone = snapshot.val().phone;
@@ -460,19 +464,26 @@ function firebaseLogin(email, password) {
         var image = snapshot.val().image;
         var lat = snapshot.val().lat;
         var long = snapshot.val().long;
+        var key = snapshot.key;
+        console.log(age, username);
+        // console.log(snapshot.val().key);
+        // console.log(snapshot.key);
 
         if (mail == email) {
           $("#userDisplay").empty();
 
           var showUser = $("<p>");
           showUser.attr("class", "navbar-text navbar-right");
-          showUser.text("Signed in as " + user);
-          $(".Name").text(name);
+          showUser.text("Signed in as " + username);
+          $(".Name").text(username);
           $(".age").text("Age:" + age);
           $(".phone").text("phone#:" + phone);
           $(".email").text("Email:" + email);
           $(".Story").text(story);
-          $(".profile-img").attr("src", image);
+          $(".profile-img").attr({
+            "src": image,
+            "id": key
+          });
 
           $("#MapBtn").on("click", function() {
             var coords = new google.maps.LatLng(lat, long);
@@ -493,7 +504,7 @@ function firebaseLogin(email, password) {
           });
 
           var logoutBtn = $("<button>");
-          logoutBtn.attr("class", "btn btn-default nav-item navbar-right");
+          logoutBtn.attr("class", "btn btn-primary btn-lg nav-item navbar-right");
           logoutBtn.attr("id", "logout");
           logoutBtn.text("Logout");
 
