@@ -35,7 +35,7 @@
   ></script>
   </head>
   <body>
-    <div id="nav" class="navbar navbar-default">
+    <!-- <div id="nav" class="navbar navbar-default">
       <div class="container-fluid mynav">
         <div id="userDisplay" class="navbar-form">
           <p class="navbar-text navbar-right">Signed in as Guest</p>
@@ -43,18 +43,54 @@
         <div id="navtitle" class="navbar navbar-left">
           <h4 class="navbar-text navbar-left">For Those in Need:</h4>
         </div>
-        <div class="navbar-form">
-          <!-- Button trigger modal -->
+        <div class="navbar-form"> -->
+            <div id="nav" class="navbar navbar-default navshadow">
+                <div class="container-fluid">
+         <!-- title and logo -->
+    <div class="pagetitle">
+      <img class="logo navbar-left" src="assets/images/logo.png"><a href="index.html"><h4 class="log navbar-text nav-link">Austin Giving Connection</h4></a>
+    </div>           
+     <!-- Log out btn -->
+     <div id="userDisplay"></div>
+                       <!-- Button trigger modal -->
           <button
-            type="button"
-            id="createBtn"
-            class="navbar-left btn btn-primary btn-lg"
-            data-toggle="modal"
-            data-target="#myModal"
-          >
-            Create Account
+          type="button"
+          id="createBtn"
+          class="navbar-right nav-link navbar-text"
+          data-toggle="modal"
+          data-target="#myModal"
+        >
+          Create Account
+        </button>
+        <!-- Button trigger modal -->
+        <button
+        type="button"
+        id="loginBtn"
+        class="navbar-right nav-link navbar-text"
+        data-toggle="modal"
+        data-target="#myModal2"
+      >
+        Sign In
+      </button>
+      
+       <!-- Search button -->
+       <a href="MainPage.html"><button id="" class="navbar-right nav-link navbar-text searchnav" >
+          Search
+        </button></a>
+        <!-- Log out button -->
+       <!-- <a href=""><button id="logout" class="navbar-right nav-link navbar-text " >
+          Log Out
+        </button></a> -->
+  <!-- Start Meetup Button -->
+  <button type="button" id="meetupsBtn" class="navbar-right nav-link navbar-text" data-toggle="modal" data-target="#myModal9">
+      MeetsUps
+    </button>
+        
+    <a href="" class= "navbar-right nav-link navbar-text">|</a>
+         <button type="button" id="aboutBtn" class="navbar-right nav-link navbar-text" data-toggle="modal" data-target="#myModal6">
+            About
           </button>
-
+         
           <!-- Create Account Modal -->
           <div
             class="modal fade"
@@ -280,16 +316,7 @@
           </div>
         </div>
         <div class="navbar-form">
-          <!-- Button trigger modal -->
-          <button
-            type="button"
-            id="loginBtn"
-            class="navbar-left btn btn-primary btn-lg"
-            data-toggle="modal"
-            data-target="#myModal2"
-          >
-            Sign In
-          </button>
+          
 
           <!-- Modal -->
           <div
@@ -347,19 +374,14 @@
         </div>
         <div class="navbar-form">
          <!-- Button About trigger modal -->
-     <button type="button" id="aboutBtn" class="navbar-left btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal6">
+     <!-- <button type="button" id="aboutBtn" class="navbar-left btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal6">
         About
-      </button>
+      </button> -->
       <!-- End about buttons -->
-      <!-- Start Meetup Button -->
-      <button type="button" id="meetupsBtn" class="navbar-left btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal9">
-          MeetsUps
-        </button>
+      
       
       <!-- end meetup modal -->
-            <a href="MainPage.html"><button id="" class="navbar-left btn btn-primary btn-lg" >
-          Search
-        </button></a>
+     
         
       <!-- Modal About -->
       <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -442,6 +464,7 @@
           </h5>
         </div>
         <div class="col-sm-1 ">
+         
           <!-- Button trigger modal -->
           <button
             type="button"
