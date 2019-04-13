@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Austin Giving Connection</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"
+    ></script>
+    <link href="https://fonts.googleapis.com/css?family=Acme|Yanone+Kaffeesatz" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCziljnFB8c4Qkgka-cMbtc7qa1dQpSD0A&callback=initMap"
+    type="text/javascript"
+  ></script>
+  </head>
+  <body>
+    <!-- <div id="nav" class="navbar navbar-default">
+      <div class="container-fluid mynav">
+        <div id="userDisplay" class="navbar-form">
+          <p class="navbar-text navbar-right">Signed in as Guest</p>
+        </div>
+        <div id="navtitle" class="navbar navbar-left">
+          <h4 class="navbar-text navbar-left">For Those in Need:</h4>
+        </div>
+        <div class="navbar-form"> -->
+            <div id="nav" class="navbar navbar-default navshadow">
+                <div class="container-fluid">
+         <!-- title and logo -->
+    <div class="pagetitle">
+      <img class="logo navbar-left" src="assets/images/logo.png"><a href="index.html"><h4 class="log navbar-text nav-link">Austin Giving Connection</h4></a>
+    </div>           
+     <!-- Log out btn -->
+     <div id="userDisplay"></div>
+                       <!-- Button trigger modal -->
+          <button
+          type="button"
+          id="createBtn"
+          class="navbar-right nav-link navbar-text"
+          data-toggle="modal"
+          data-target="#myModal"
+        >
+          Create Account
+        </button>
+        <!-- Button trigger modal -->
+        <button
+        type="button"
+        id="loginBtn"
+        class="navbar-right nav-link navbar-text"
+        data-toggle="modal"
+        data-target="#myModal2"
+      >
+        Sign In
+      </button>
+      
+       <!-- Search button -->
+       <a href="MainPage.html"><button id="" class="navbar-right nav-link navbar-text searchnav" >
+          Search
+        </button></a>
+        <!-- Log out button -->
+       <!-- <a href=""><button id="logout" class="navbar-right nav-link navbar-text " >
+          Log Out
+        </button></a> -->
+  <!-- Start Meetup Button -->
+  <button type="button" id="meetupsBtn" class="navbar-right nav-link navbar-text" data-toggle="modal" data-target="#myModal9">
+      MeetsUps
+    </button>
+        
+    <a href="" class= "navbar-right nav-link navbar-text">|</a>
+         <button type="button" id="aboutBtn" class="navbar-right nav-link navbar-text" data-toggle="modal" data-target="#myModal6">
+            About
+          </button>
+         
+          <!-- Create Account Modal -->
+          <div
+            class="modal fade"
+            id="myModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">Create Account</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="email"
+                      placeholder="Email"
+                    />
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      placeholder="Password"
+                    />
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="username"
+                      placeholder="Username"
+                    />
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="age-input"
+                      placeholder="Age"
+                    />
+                    <input
+                    type="number"
+                    class="form-control"
+                    id="phone-input"
+                    placeholder="Phone"
+                  />
+                  <textarea
+                  rows="5" 
+                  cols="70"
+                  class="form-control"
+                  id="story-input"
+                  placeholder="Your Story"
+                ></textarea>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="image-input"
+                  placeholder="Image Link"
+                />
+
+                <button class="show btn btn-default" id='findLocationButton' ><i class="fa fa-map-marker" style='font-size:20px;color:red' aria-hidden="true"></i>  Allow us to save your location so we can find you </button>
+
+                </div>
+                <!-- check boxes in create account  -->
+                <div class="row">
+                    <div class="col-sm-12"><h5>Things I Need</h5></div>
+                    <!-- Col 1 -->
+                    <div class ="col-sm-6">
+                    <!-- .............. -->
+                    
+                    <div class="row myrow">
+                        
+                      <input
+                      name="shoes"
+                        class="checkbox-input"
+                        type="checkbox"
+                        aria-label="Checkbox for following text input"
+                      />
+                      <div class="checkbox-input-text">
+                        <h6 class="shoes" value="Shoes">Shoes</h6>
+                      </div>
+                    </div>
+                    <!-- .............. -->
+                    <div class="row myrow">
+                        <input
+                        name="tissues"
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="tissues">Tissues</h6>
+                        </div>
+                      </div>
+                      <!-- .............. -->
+                    <div class="row myrow">
+                        <input
+                        name="towels"
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="towels">Towels</h6>
+                        </div>
+                      </div>
+                    <!-- .............. -->
+                    <div class="row myrow">
+                      <input
+                      name="blanket"
+                        class="checkbox-input"
+                        type="checkbox"
+                        aria-label="Checkbox for following text input"
+                      />
+                      <div class="checkbox-input-text">
+                        <h6 class="blanket">Blanket</h6>
+                      </div>
+                    </div>
+                    <!-- .............. -->
+                    <div class="row myrow">
+                      <input
+                      name="shirt"
+                        class="checkbox-input"
+                        type="checkbox"
+                        aria-label="Checkbox for following text input"
+                      />
+                      <div class="checkbox-input-text">
+                        <h6 class="shirt">Shirt</h6>
+                      </div>
+                    </div>
+                   <!-- .............. -->
+                  </div>
+                  <!--End of col 1 -->
+                   <!-- Col 2 -->
+                   <div class ="col-sm-6">
+                      <!-- .............. -->
+                      <div class="row myrow">
+                        <input
+                        name="toiletries"
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="toiletries" value="Toiletries">Toiletries</h6>
+                        </div>
+                      </div>
+                      <!-- .............. -->
+                      <div class="row myrow">
+                          <input
+                          name="socks"
+                            class="checkbox-input"
+                            type="checkbox"
+                            aria-label="Checkbox for following text input"
+                          />
+                          <div class="checkbox-input-text">
+                            <h6 class="socks">Socks</h6>
+                          </div>
+                        </div>
+                        <!-- .............. -->
+                      <div class="row myrow">
+                          <input
+                          name="pots"
+                            class="checkbox-input"
+                            type="checkbox"
+                            aria-label="Checkbox for following text input"
+                          />
+                          <div class="checkbox-input-text">
+                            <h6 class="pots">Pots</h6>
+                          </div>
+                        </div>
+                      <!-- .............. -->
+                      <div class="row myrow">
+                        <input
+                        name="bed"
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="bed">Bed</h6>
+                        </div>
+                      </div>
+                      <!-- .............. -->
+                      <div class="row myrow">
+                        <input
+                        name="toaster"
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="toaster">Toaster</h6>
+                        </div>
+                      </div>
+                      </div>
+                      
+                     <!-- .............. -->
+<!-- ================== -->
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button id="create" class="btn btn-primary" type="submit" data-dismiss="modal">
+                    Create
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-form">
+          
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="myModal2"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">Login</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="emailLogin"
+                      placeholder="email"
+                    />
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="passwordLogin"
+                      placeholder="password"
+                    />
+                    
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button id="signin" class="btn btn-primary" type="submit" data-dismiss="modal">
+                    Login
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-form">
+         <!-- Button About trigger modal -->
+     <!-- <button type="button" id="aboutBtn" class="navbar-left btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal6">
+        About
+      </button> -->
+      <!-- End about buttons -->
+      
+      
+      <!-- end meetup modal -->
+     
+        
+      <!-- Modal About -->
+      <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">About</h4>
+            </div>
+            <div class="modal-body">
+                <div class="about ">
+                  <!-- Penny you can edit your text here but make sure u change it in all pages -->
+                  <h5 class="about">
+                    Austin Giving Connection partners with local non-profits to find individuals who have the most critical needs and allows them to set up a giving profile which outlines their needs and tells their story.
+                    Those who wish to donate can search profiles and chose who receives their donation(s).  This provides a more personal connection between the two and allows opportunity for relationships to develop.  The person in need has the option to identify the means in which the donor communicates (e-mail, phone, text, or non-profit).
+                    <br>
+                    The search function allows the user to find recipients based on their needs and their location.<br>
+                    <br>
+                    Recipient profiles will include: <br>
+                    •    Teenagers who are aging out of the foster care system <br>
+                    •    Chronically homeless <br>
+                    •    Families who have experienced loss from natural disasters, such as floods or fires <br>
+                    •    Families or individuals in transition due to illness or death <br>
+                    •    Children in transition due to family instability <br>
+                    <br>
+                    Once recipients establish a profile, they can go in and update their information at any time.  Profile input is stored in a database so that the donator can identify if their needs or location changes.
+                    <br>
+                    <br>
+                      <img class="about-pic" src="assets/images/charity-image.jpeg">
+                 </h5>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+<!-- User Profile -->
+    <div class="container my-container">
+      <div class="row">
+        <div class="col-sm-4">
+          <img
+            class="profile-img row"
+            src="https://bootdey.com/img/Content/avatar/avatar7.png"
+          />
+          <h3 class="Name row">My Name</h3>
+          <h5 class="age row">Age:</h5>
+          <h5 class="phone row">Phone#:</h5>
+          <h5 class="email row">Email:</h5>
+         
+          <!-- Find me modal -->
+          <div class="row">
+                <button
+                type="button"
+                id="MapBtn"
+                class="navbar-left btn btn-primary btn-lg"
+                data-toggle="modal"
+                data-target="#myModal5"
+              >
+            <img
+              class="find-me"
+              src="https://www.ditoweb.com/wp-content/uploads/2016/05/places-api.png"
+            />
+            <h5 class="find-me-text">Find me</h5>
+            <!-- Find me modal pop up -->
+            
+            <!-- modal end -->
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <h5 class="Story">
+            <strong><u>Story</u></strong> <br />
+            <br /> This is the story section of your profile. <br /> <br /> Be honest and sincere.  Others want to know about you!  What struggles have you endured that lead you here? <br /><br />   Tell us anything that you want to share to help donators understand how to help you. The more someone understands your struggles, the more likely you are to receive help from them.  Good luck!
+            <br /> <br /> <strong>Click Create Account at the top when you are ready to make your profile.</strong> <br />
+          </h5>
+        </div>
+        <div class="col-sm-1 ">
+         
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            id="editBtn"
+            class="navbar-left btn btn-primary btn-lg"
+            data-toggle="modal"
+            data-target="#myModal4"
+          ><p id=edit-text>Edit</p>
+            <img
+              class="edit row "
+              src="http://pluspng.com/img-png/update-button-png-adjust-edit-update-icon-512.png"
+            />
+          </button>
+        </div>
+      
+       
+ 
+ <!-- end of popup modal -->
+ <!-- end meetup buttons -->
+ <div
+ class="modal fade"
+ id="myModal9"
+ tabindex="-1"
+ role="dialog"
+ aria-labelledby="myModalLabel"
+ >
+ <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">MeetUps</h4>
+      </div>
+      <div class="modal-body modalbodymeetup">
+      <div class = "container my-container my-containermeetup">
+      
+            <div class="results"></div>
+          </div>
+          
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-default"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+        
+      </div>
+     </div>  
+ </div>
+</div>
+<!-- actual meetup modal -->
+        <!-- Edit modal -->
+        <div
+          class="modal fade"
+          id="myModal4"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="myModalLabel"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Edit Profile</h4>
+              </div>
+              <!-- edit modal -->
+              <div class="modal-body">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="emailE"
+                      placeholder="Email"
+                    />
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="passwordE"
+                      placeholder="Password"
+                    />
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="usernameE"
+                      placeholder="Username"
+                    />
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="age-inputE"
+                      placeholder="Age"
+                    />
+                    <input
+                    type="number"
+                    class="form-control"
+                    id="phone-inputE"
+                    placeholder="Phone"
+                  />
+                  <textarea
+                  rows="5" 
+                  cols="70"
+                  class="form-control"
+                  id="story-inputE"
+                  placeholder="Your Story"
+                ></textarea>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="image-inputE"
+                  placeholder="Image Link"
+                />
+
+                <button class="show btn btn-default" id='findLocationButton' ><i class="fa fa-map-marker" style='font-size:20px;color:red' aria-hidden="true"></i>  Allow us to save your location so we can find you </button>
+
+                </div>
+                <!-- check boxes in edit account  -->
+                <div class="row">
+                    <div class="col-sm-12"><h5>Things I Need</h5></div>
+                    <!-- Col 1 -->
+                    <div class ="col-sm-6">
+                    <!-- .............. -->
+                    
+                    <div class="row myrow">
+                        
+                      <input
+                      name="shoes"
+                        class="checkbox-input"
+                        type="checkbox"
+                        aria-label="Checkbox for following text input"
+                      />
+                      <div class="checkbox-input-text">
+                        <h6 class="shoes" value="Shoes">Shoes</h6>
+                      </div>
+                    </div>
+                    <!-- .............. -->
+                    <div class="row myrow">
+                        <input
+                        name="tissues"
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="tissues">Tissues</h6>
+                        </div>
+                      </div>
+                      <!-- .............. -->
+                    <div class="row myrow">
+                        <input
+                        name="towels"
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="towels">Towels</h6>
+                        </div>
+                      </div>
+                    <!-- .............. -->
+                    <div class="row myrow">
+                      <input
+                      name="blanket"
+                        class="checkbox-input"
+                        type="checkbox"
+                        aria-label="Checkbox for following text input"
+                      />
+                      <div class="checkbox-input-text">
+                        <h6 class="blanket">Blanket</h6>
+                      </div>
+                    </div>
+                    <!-- .............. -->
+                    <div class="row myrow">
+                      <input
+                      name="shirt"
+                        class="checkbox-input"
+                        type="checkbox"
+                        aria-label="Checkbox for following text input"
+                      />
+                      <div class="checkbox-input-text">
+                        <h6 class="shirt">Shirt</h6>
+                      </div>
+                    </div>
+                   <!-- .............. -->
+                  </div>
+                  <!--End of col 1 -->
+                   <!-- Col 2 -->
+                   <div class ="col-sm-6">
+                      <!-- .............. -->
+                      <div class="row myrow">
+                        <input
+                        name="toiletries"
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="toiletries" value="Toiletries">Toiletries</h6>
+                        </div>
+                      </div>
+                      <!-- .............. -->
+                      <div class="row myrow">
+                          <input
+                          name="socks"
+                            class="checkbox-input"
+                            type="checkbox"
+                            aria-label="Checkbox for following text input"
+                          />
+                          <div class="checkbox-input-text">
+                            <h6 class="socks">Socks</h6>
+                          </div>
+                        </div>
+                        <!-- .............. -->
+                      <div class="row myrow">
+                          <input
+                          name="pots"
+                            class="checkbox-input"
+                            type="checkbox"
+                            aria-label="Checkbox for following text input"
+                          />
+                          <div class="checkbox-input-text">
+                            <h6 class="pots">Pots</h6>
+                          </div>
+                        </div>
+                      <!-- .............. -->
+                      <div class="row myrow">
+                        <input
+                        name="bed"
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="bed">Bed</h6>
+                        </div>
+                      </div>
+                      <!-- .............. -->
+                      <div class="row myrow">
+                        <input
+                        name="toaster"
+                          class="checkbox-input"
+                          type="checkbox"
+                          aria-label="Checkbox for following text input"
+                        />
+                        <div class="checkbox-input-text">
+                          <h6 class="toaster">Toaster</h6>
+                        </div>
+                      </div>
+                      </div>
+                      
+                     <!-- .............. -->
+<!-- ================== -->
+                  </div>
+                </div>
+                <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-default"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button id="Submitchanges" class="btn btn-primary" type="submit" data-dismiss="modal">
+                      Submit changes
+                    </button>
+                  </div>
+              <!-- end of edit modal -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+       <!-- Find me modal pop up -->
+          <div
+          class="modal fade"
+          id="myModal5"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="myModalLabel"
+        >
+        <div class="modal-dialog" role="document">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <button
+                   type="button"
+                   class="close"
+                   data-dismiss="modal"
+                   aria-label="Close"
+                 >
+                   <span aria-hidden="true">&times;</span>
+                 </button>
+                 <h4 class="modal-title" id="myModalLabel">Find Me</h4>
+               </div>
+               <div class="modal-body">
+                 <!-- added a class="map" -->
+                     <div id="map">
+                       <!-- <iframe id="mapshow"
+                       class="map"
+                      width="550"
+                      height="450"
+                      frameborder="0" style="border:0"
+                      src="https://maps.google.com/maps?q=90,20&hl=es;z=14&amp;output=embed" allowfullscreen>
+                    </iframe> -->
+                  </div>
+               </div>
+               <div class="modal-footer">
+                 <button
+                   type="button"
+                   class="btn btn-default"
+                   data-dismiss="modal"
+                 >
+                   Close
+                 </button>
+                 
+               </div>
+             </div>
+      </div>
+          <!-- modal end -->
+  </body>
+  <script src="assets/javascript/app.js"></script>
+  <script src="assets/javascript/MeetUp.js"></script>
+  <!-- <script src="assets/javascript/dinaTest.js"></script> -->
+</html>

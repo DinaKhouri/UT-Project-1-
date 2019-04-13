@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Austin Giving Connection</title>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		 crossorigin="anonymous"></script>
+	
+  <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Acme|Yanone+Kaffeesatz" rel="stylesheet">
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCziljnFB8c4Qkgka-cMbtc7qa1dQpSD0A&callback=initMap"
+    type="text/javascript"
+  ></script>
+
+</head>
+<body>
+
+        <div id="nav" class="navbar navbar-default navshadow">
+            <div class="container-fluid">
+     <!-- title and logo -->
+<div class="pagetitle">
+  <img class="logo navbar-left" src="assets/images/logo.png"><a href="index.html"><h4 class="log navbar-text nav-link">Austin Giving Connection</h4></a>
+</div>           
+                      
+     <!-- Button About trigger modal -->
+     <a href="UserProfile.html"> <button id="ProfileBtn" class="navbar-right nav-link navbar-text"  >
+        Account
+      </button></a>
+<a href="" class= "navbar-right nav-link navbar-text">|</a>
+     <button type="button" id="aboutBtn" class="navbar-right nav-link navbar-text" data-toggle="modal" data-target="#myModal6">
+        About
+      </button>
+     
+
+      <!-- Modal About -->
+      <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">About</h4>
+            </div>
+            <div class="modal-body">
+                <div class="about">
+                  <!-- Penny you can edit your text here but make sure u change it in all pages -->
+                   <h5 class="about">
+                      Austin Giving Connection partners with local non-profits to find individuals who have the most critical needs and allows them to set up a giving profile which outlines their needs and tells their story.
+                      Those who wish to donate can search profiles and chose who receives their donation(s).  This provides a more personal connection between the two and allows opportunity for relationships to develop.  The person in need has the option to identify the means in which the donor communicates (e-mail, phone, text, or non-profit).
+                      <br>
+                      The search function allows the user to find recipients based on their needs and their location.<br>
+                      <br>
+                      Recipient profiles will include: <br>
+                      •    Teenagers who are aging out of the foster care system <br>
+                      •    Chronically homeless <br>
+                      •    Families who have experienced loss from natural disasters, such as floods or fires <br>
+                      •    Families or individuals in transition due to illness or death <br>
+                      •    Children in transition due to family instability <br>
+                      <br>
+                      Once recipients establish a profile, they can go in and update their information at any time.  Profile input is stored in a database so that the donator can identify if their needs or location changes.
+                      <br>
+                      <br>
+                      <img class="about-pic" src="assets/images/charity-image.jpeg">
+                   </h5>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              
+            </div>
+          </div>
+        </div>
+      </div> 
+            </div>
+        </div>
+    <!-- <div class="statement"><h1>Connecting the fortunate to the people in need in your city </h1></div> -->
+        <div class="container my-container search">
+    <!-- search divs -->
+            <div class="panel panel-default">
+                <div class="panel-heading donator-title">Donator Search</div>
+                    <div class="panel-body">
+                        <div class="form">
+                          
+                            <label>Pick Something You Want to Donate</label>
+                            <select id="red-sort" class="form-group form-control">
+                                <option>Shoes</option>
+                                <option>Tissues</option>
+                                <option>Towels</option>
+                                <option>Blanket</option>
+                                <option>Shirt</option>
+                                <option>Toiletries</option>
+                                <option>Socks</option>
+                                <option>Pots</option>
+                                <option>Bed</option>
+                                <option>Toaster</option>
+                            </select>
+                            <!-- removed hyperlink to userprofile on donator search -->
+                           <!-- <a href="UserProfile.html">  -->
+                             <button id="search-button" type="submit" class="btn btn-default btn-primary">Search</button>
+                            <!-- </a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- Results divs -->
+            
+    <div class="container my-container result">
+    
+      <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"> Picture</th>
+                  <th scope="col"> Username</th>
+                  <th scope="col"> Needs</th>
+                  <th scope="col"> Profile</th>
+                </tr>
+              </thead>
+              <tbody id="result-list">
+
+              </tbody>
+          </table>
+
+  
+
+</div>
+
+       
+    <!-- popupmodal -->
+ <div
+ class="modal fade"
+ id="popupmodal"
+ tabindex="-1"
+ role="dialog"
+ aria-labelledby="myModalLabel"
+>
+<div class="modal-dialogp" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">User Profile</h4>
+      </div>
+      <div class="modal-body modalbody">
+        <!-- user result popup -->
+           <div class="container my-containerpopup">
+              <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-3">
+                  <img
+                    class="profile-img profile-imgpop row"
+                    src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                  />
+                  <h3 class="Name row ">My Name</h3>
+                  <h5 class="age row">Contact Information:</h5>
+                  <h5 class="phone row">Phone#:</h5>
+                  <h5 class="email row">Email:</h5>
+                 
+                  <!-- Find me modal -->
+                  <div class="row">
+                        <button
+                        type="button"
+                        id="MapBtnpopup"
+                        class="navbar-left btn btn-primary btn-lg"
+                        data-toggle="modal"
+                        data-target="#myModal8"
+                      >
+                    <img
+                      class="find-me"
+                      src="https://www.ditoweb.com/wp-content/uploads/2016/05/places-api.png"
+                    />
+                    <h5 class="find-me-text">Find me</h5></div>
+      
+     
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+    <h5 class="Story">
+      
+    </h5>
+  
+  <div class="col-sm-1 "></div>
+
+
+<!-- Find me modal pop up -->
+<div
+class="modal fade"
+id="myModal8"
+tabindex="-1"
+role="dialog"
+aria-labelledby="myModalLabel"
+>
+<div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button
+         type="button"
+         class="close"
+         data-dismiss="modal"
+         aria-label="Close"
+       >
+         <span aria-hidden="true">&times;</span>
+       </button>
+       <h4 class="modal-title" id="myModalLabel">Find Me</h4>
+     </div>
+     <div class="modal-body">
+     
+           <div id="map"></div>
+     </div>
+     <div class="modal-footer">
+       <button
+         type="button"
+         class="btn btn-default"
+         data-dismiss="modal"
+       >
+         Close
+       </button>
+       
+     </div>
+    </div>  
+</div>
+<!-- modal end -->
+    </body>
+<script src="assets/javascript/app.js"></script>
+
+</html>

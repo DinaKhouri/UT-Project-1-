@@ -1,0 +1,311 @@
+@import "compass/css3";
+
+@import "compass/css3/transform";
+@import url(https://fonts.googleapis.com/css?family=Bangers);
+.pagetitle {
+  text-align: center;
+}
+.navbar-text {
+  background-color: transparent;
+  border: none;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.navbar-text:hover {
+  color: #2e6da4;
+}
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #6c757d;
+  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 0.75rem 0;
+}
+.donator-title {
+  font-weight: bold;
+}
+.navshadow {
+  -webkit-box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.4);
+}
+.modal-dialogp {
+  width: 900px;
+}
+/* .results {
+  overflow: scroll;
+} */
+.btn {
+  margin-right: 5px;
+}
+#map {
+  width: 550px;
+  height: 400px;
+}
+.statement {
+  padding: 1em 0.5em;
+  margin: 0 auto;
+}
+/* h1 {
+  text-align: center;
+  font-weight: normal;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  white-space: nowrap;
+  font-size: 4.3vw;
+  z-index: 1000;
+  font-family: "Bangers", cursive;
+  text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.7);
+} */
+#edit-text {
+  color: black;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+  padding: 5px;
+  margin-top: 5px;
+}
+.about {
+  font-family: "Noto Serif SC", serif;
+}
+/* .titlem {
+  background-color: grey;
+} */
+.modalbody {
+  background-image: url(../images/background.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.modalbodymeetup {
+  background-image: url(../images/background.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.my-container {
+  padding: 3%;
+  background-color: whitesmoke;
+  height: 500px;
+  width: 700px;
+  margin-top: 3%;
+  -webkit-box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
+}
+.my-containermeetup {
+  width: 500px;
+  overflow-y: scroll;
+}
+.my-containerpopup {
+  padding: 3%;
+  background-color: whitesmoke;
+  min-height: 400px;
+  width: 700px;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  -webkit-box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 39px 0px rgba(0, 0, 0, 0.75);
+}
+.search {
+  height: 300px;
+}
+.result {
+  min-height: 700px;
+
+  margin-bottom: 50px;
+}
+#myModal4 > div > div > div.modal-body > div.input-group {
+  width: 90%;
+}
+body {
+  background-image: url(../images/background.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.profile-img {
+  background-color: #fff;
+  height: 200px;
+  position: relative;
+  width: 200px;
+  border-radius: 100%;
+  border: 4px solid #fff;
+  -webkit-box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.75);
+}
+.profile-imgpop {
+  height: 120px;
+  width: 120px;
+}
+body > div.container.my-container > div {
+  padding: 10px;
+}
+.find-me {
+  height: 40px;
+  width: 40px;
+  float: left;
+}
+.find-me-text {
+  padding-left: 50px;
+  font-family: "Acme", sans-serif;
+  color: black;
+}
+.age,
+.phone,
+.email {
+  font-family: "Acme", sans-serif;
+  font-size: 1.2em;
+}
+.row {
+  padding-top: 5%;
+}
+.searchnav {
+  margin-right: 3px;
+}
+#navtitle {
+  padding: 0px;
+  margin: 0px;
+}
+.title {
+  float: left;
+}
+.navbar-right {
+  padding-right: 5px;
+}
+#ProfileBtn {
+  margin-right: 100px;
+  margin-left: 30px;
+}
+.log {
+  font-size: 1.5em;
+}
+
+#editBtn {
+  background-color: transparent;
+  border: none;
+}
+
+.usertd {
+  margin-right: 50px;
+}
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+#MapBtn,
+#MapBtnpopup {
+  background-color: transparent;
+  border: none;
+  padding-top: 0px;
+}
+.Name {
+  font-family: "Acme", sans-serif;
+}
+.checkbox-input-text {
+  padding-left: 20px;
+}
+input.checkbox-input {
+  float: left;
+  margin-top: 10px;
+}
+
+.myrow {
+  padding-left: 30px;
+}
+#myModal4
+  > div
+  > div
+  > div.modal-body
+  > div.input-group
+  > div.input-group-text.row
+  > div
+  > input {
+  float: left;
+  margin-top: 10px;
+}
+
+.Story {
+  font-family: "Yanone Kaffeesatz", sans-serif;
+  padding-top: 80px;
+}
+
+.edit {
+  height: 25px;
+  width: 25px;
+}
+.edit:hover {
+  -webkit-box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.75);
+}
+.checkbox-input-text {
+  float: left;
+}
+.result {
+  overflow-y: scroll;
+}
+
+.nametd {
+  padding-right: 40px;
+  font-family: "Acme", sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.needstd {
+  padding-right: 40px;
+  font-family: "Acme", sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.resultsPic {
+  height: 100px;
+  width: 100px;
+  margin-right: 50px;
+}
+
+#findLocationButton {
+  background-color: beige;
+}
+#findLocationButton:hover {
+  background-color: lightblue;
+}
+
+.red {
+  background-color: red;
+}
+
+#myWindow1 {
+  font-size: 50px;
+}
+
+.about-pic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Austin Giving Connection</title>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		 crossorigin="anonymous"></script>
+	
+  <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+   
+</head>
+<body>
+    <div id="nav" class="navbar navbar-default">
+        <div class="container-fluid">
+                         
+          <!-- Button About trigger modal -->
+          <button type="button" id="aboutBtn" class="navbar-left btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal6">
+            About
+          </button>
+          <a href="UserProfile.html"> <button id="ProfileBtn" class="navbar-left btn btn-primary btn-lg"  >
+            Need account?
+          </button></a>
+
+          <!-- title and logo -->
+          <div class="pagetitle">
+            <img class="logo navbar-left" src="../assets/images/logo.png"><h4 class="navbar-text">Austin Giving Connection</h4>
+          </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading donator-title">Community Meet Up Board</div>
+        <div class="panel-body">
+          <div class="results"></div>
+      </div>
+    </div> 
+    <script src="MeetUp.js"></script>
+</body>
+</html>
